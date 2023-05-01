@@ -55,7 +55,7 @@ model Session {
 model User {
     id            String    @id @default(cuid()) @map("user_id")
     // nameとemailはなぜOptionalなのか？
-    name          String?
+    name          String?   @unique
     email         String?   @unique
     emailVerified DateTime? @map("email_verified")
     image         String?
