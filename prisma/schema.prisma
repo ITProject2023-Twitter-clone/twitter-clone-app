@@ -14,14 +14,6 @@ datasource db {
     url      = env("DATABASE_URL")
 }
 
-model Example {
-    id        String   @id @default(cuid()) @map("example_id")
-    createdAt DateTime @default(now()) @map("created_at")
-    updatedAt DateTime @updatedAt @map("updated_at")
-
-    @@map("examples")
-}
-
 // Necessary for Next auth
 model Account {
     id                String  @id @default(cuid()) @map("account_id")
@@ -42,6 +34,17 @@ model Account {
     @@map("accounts")
 }
 
+model Profile {
+    userId      String  @id @map("user_id")
+    explanation String? @db.Text
+    header_path String? @db.Text
+    location    String  @db.VarChar(30)
+    website     String  @db.VarChar(100)
+    user        User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+    @@map("profiles")
+}
+
 model Session {
     id           String   @id @default(cuid()) @map("session_id")
     sessionToken String   @unique @map("session_token")
@@ -53,14 +56,21 @@ model Session {
 }
 
 model User {
-    id            String    @id @default(cuid()) @map("user_id")
-    // nameとemailはなぜOptionalなのか？
-    name          String?   @unique
-    email         String?   @unique
-    emailVerified DateTime? @map("email_verified")
-    image         String?
+    id            String     @id @default(cuid()) @map("user_id")
+    name          String?    @unique
+    email         String?    @unique
+    emailVerified DateTime?  @map("email_verified")
+    image         String?    @map("image_path") @db.Text
+    birhday       DateTime?
+    createdAt     DateTime   @default(now()) @map("created_at")
     accounts      Account[]
     sessions      Session[]
+    profile       Profile?
+    tweet         Tweet[]
+    like          Like[]
+    retweet       Retweet[]
+    follow        Follow[]
+    follower      Follower[]
 
     @@map("users")
 }
@@ -72,4 +82,57 @@ model VerificationToken {
 
     @@unique([identifier, token])
     @@map("verification_tokens")
+}
+
+model Tweet {
+    tweetId       Int       @id @default(autoincrement()) @map("tweet_id")
+    userId        String    @map("user_id")
+    parentTweetId Int?      @map("parent_tweet_id")
+    body          String    @db.VarChar(140)
+    createdAt     DateTime  @default(now()) @map("created_at")
+    user          User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+    like          Like[]
+    retweet       Retweet[]
+
+    @@map("tweets")
+}
+
+model Like {
+    userId    String   @map("user_id")
+    tweetId   Int      @map("tweet_id")
+    createdAt DateTime @default(now()) @map("created_at")
+    user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+    tweet     Tweet    @relation(fields: [tweetId], references: [tweetId], onDelete: Cascade)
+
+    @@id([userId, tweetId])
+    @@map("likes")
+}
+
+model Retweet {
+    userId    String   @map("user_id")
+    tweetId   Int      @map("tweet_id")
+    createdAt DateTime @default(now()) @map("created_at")
+    user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+    tweet     Tweet    @relation(fields: [tweetId], references: [tweetId], onDelete: Cascade)
+
+    @@id([userId, tweetId])
+    @@map("retweets")
+}
+
+model Follow {
+    followId  String   @id @default(cuid()) @map("follow_id")
+    userId    String   @map("user_id")
+    user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+    createdAt DateTime @default(now()) @map("created_at")
+
+    @@map("follows")
+}
+
+model Follower {
+    followerId String   @id @default(cuid()) @map("follower_id")
+    userId     String   @map("user_id")
+    user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+    createdAt  DateTime @default(now()) @map("created_at")
+
+    @@map("followers")
 }
