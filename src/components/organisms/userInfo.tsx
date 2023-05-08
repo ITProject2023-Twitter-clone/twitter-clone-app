@@ -4,7 +4,7 @@ import Icon from "../atoms/icon";
 import HeaderImg from "../atoms/headerImg";
 import FollowButton from "../atoms/followButton";
 import UserNameID from "../molecules/userNameID";
-import BioContents from "../atoms/bioContents";
+import BioContent from "../atoms/bioContent";
 import FollowRelation from "../atoms/followRelation";
 
 const UserInfo = () => {
@@ -20,7 +20,7 @@ const UserInfo = () => {
       <div className="relative  m-auto w-4/5">
         <UserNameID name="userName" id="@userID" area="profile" />
         <div className="my-1">
-          <BioContents />
+          <BioContent content = "bio"/>
           <div className="flex h-[13px] items-center">
             <p className="pr-[5px] text-[10px]  text-darkGray">place</p>
             <Link href="#" className="px-[5px] text-[10px]  text-darkGray">
