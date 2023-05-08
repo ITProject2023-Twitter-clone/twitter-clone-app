@@ -13,7 +13,7 @@ const UserInfo = () => {
       <HeaderImg />
       <div className="relative z-10 m-auto flex w-4/5 justify-between">
         <Icon size={100} area="profile" />
-        <div className="mb-3">
+        <div className="mt-[2.5px]">
           <FollowButton />
         </div>
       </div>
