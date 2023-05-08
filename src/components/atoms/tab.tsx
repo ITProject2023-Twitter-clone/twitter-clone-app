@@ -6,7 +6,7 @@ type Props = {
 
 const Tab = (props:Props) => {
   return (
-    <button className='w-full font-bold'>{props.tabName}</button>
+    <button className='w-full font-bold  transition duration-300 ease-in-out hover:bg-ExtraLightGray border-b-primary hover:border-b-2'>{props.tabName}</button>
   )
 }
 
