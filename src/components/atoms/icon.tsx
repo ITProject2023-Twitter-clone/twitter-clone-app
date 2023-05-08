@@ -15,7 +15,7 @@ const getAreaClass = (area: AreaType) => {
       return "border-4 border-white absolute bottom-0 h-[71px] w-[71px]";
     }
     case "tweet": {
-      return "w-[46px] h-[46px] relative"
+      return "w-[46px] h-[46px] relative mr-2"
     }
     default: {
       return "";

@@ -1,9 +1,13 @@
 import React from 'react'
 
-const TweetContent = () => {
+type Props = {
+  content: string;
+}
+
+const TweetContent = (props:Props) => {
   return (
-    <p className="break-words text-[12px] w-1/2 max-w-[60%]">
-    texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext
+    <p className="break-words text-[12px] w-[75%] max-w-[500px] min-w-[200px]">
+    {props.content}
   </p>
   )
 }

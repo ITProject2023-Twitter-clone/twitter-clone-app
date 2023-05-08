@@ -7,8 +7,8 @@ import TweetContent from "../atoms/tweetContent";
 
 const Tweet = () => {
   return (
-    <div className="mt-1 flex  w-full border-b-[1px] border-ExtraLightGray">
-      <div className="m-auto flex w-3/4 min-[390px]:">
+    <div className="pt-1 flex  w-full border-b-[1px] border-ExtraLightGray transition duration-300 ease-in-out hover:bg-ExtraLightGray">
+      <div className="m-auto flex w-3/4 min-[390px]">
         <Icon size={46} area="tweet" />
         <div>
           <div className="flex items-center">
@@ -16,8 +16,8 @@ const Tweet = () => {
             <UserID userID="@userID" area="tweet" />
             <p className="text-[12px] text-darkGray">・yyyy/mm/dd</p>
           </div>
-          <div className="">
-            <TweetContent />
+          <div>
+            <TweetContent content="tweettweet"/>
             <ActionButtons />
           </div>
         </div>
