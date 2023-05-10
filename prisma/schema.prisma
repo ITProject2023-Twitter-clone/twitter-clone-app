@@ -90,6 +90,7 @@ model Tweet {
     parentTweetId Int?      @map("parent_tweet_id")
     body          String    @db.VarChar(140)
     createdAt     DateTime  @default(now()) @map("created_at")
+    updatedAt     DateTime  @updatedAt @map("updated_at")
     user          User      @relation(fields: [userId], references: [id], onDelete: Cascade)
     like          Like[]
     retweet       Retweet[]
