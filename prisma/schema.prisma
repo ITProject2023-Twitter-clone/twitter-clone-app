@@ -85,7 +85,7 @@ model VerificationToken {
 }
 
 model Tweet {
-    tweetId       Int       @id @default(autoincrement()) @map("tweet_id")
+    tweetId       String    @id @default(cuid()) @map("tweet_id")
     userId        String    @map("user_id")
     parentTweetId Int?      @map("parent_tweet_id")
     body          String    @db.VarChar(140)
@@ -93,13 +93,25 @@ model Tweet {
     user          User      @relation(fields: [userId], references: [id], onDelete: Cascade)
     like          Like[]
     retweet       Retweet[]
+    tweet         Reply?
+    reply         Reply[]   @relation("rootTweet")
 
     @@map("tweets")
 }
 
+model Reply {
+    replyId     String @id @default(cuid()) @map("reply_id")
+    tweetId     String @unique @map("tweet_id")
+    rootTweetId String @map("root_tweet_id")
+    tweet       Tweet  @relation(fields: [tweetId], references: [tweetId], onDelete: Cascade)
+    rootTweet   Tweet  @relation("rootTweet", fields: [rootTweetId], references: [tweetId], onDelete: Cascade)
+
+    @@map("replies")
+}
+
 model Like {
     userId    String   @map("user_id")
-    tweetId   Int      @map("tweet_id")
+    tweetId   String   @map("tweet_id")
     createdAt DateTime @default(now()) @map("created_at")
     user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
     tweet     Tweet    @relation(fields: [tweetId], references: [tweetId], onDelete: Cascade)
@@ -110,7 +122,7 @@ model Like {
 
 model Retweet {
     userId    String   @map("user_id")
-    tweetId   Int      @map("tweet_id")
+    tweetId   String   @map("tweet_id")
     createdAt DateTime @default(now()) @map("created_at")
     user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
     tweet     Tweet    @relation(fields: [tweetId], references: [tweetId], onDelete: Cascade)
