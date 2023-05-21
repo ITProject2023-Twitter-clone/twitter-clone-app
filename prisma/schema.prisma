@@ -80,7 +80,6 @@ model User {
     retweet       Retweet[]
     follow        Follow?
     following     Follow[]   @relation("followingUser")
-    // follower      Follower[]
     Follower      Follower?
     FollowerUser  Follower[] @relation("followerUser")
 
