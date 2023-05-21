@@ -97,17 +97,17 @@ model VerificationToken {
 }
 
 model Tweet {
-    tweetId       String    @id @default(cuid()) @map("tweet_id")
-    userId        String    @map("user_id")
-    parentTweetId Int?      @map("parent_tweet_id")
-    body          String    @db.VarChar(140)
-    createdAt     DateTime  @default(now()) @map("created_at")
-    updatedAt     DateTime  @updatedAt @map("updated_at")
-    user          User      @relation(fields: [userId], references: [id], onDelete: Cascade)
-    like          Like[]
-    retweet       Retweet[]
-    tweet         Reply?
-    reply         Reply[]   @relation("rootTweet")
+    tweetId   String    @id @map("tweet_id") // アプリケーション側でULIDを生成する
+    userId    String    @map("user_id")
+    sentence  String    @db.VarChar(1000)
+    // archive_at, is_archive
+    createdAt DateTime  @default(now()) @map("created_at")
+    updatedAt DateTime  @updatedAt @map("updated_at")
+    user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+    like      Like[]
+    retweet   Retweet[]
+    tweet     Reply?
+    reply     Reply[]   @relation("rootTweet")
 
     @@map("tweets")
 }
