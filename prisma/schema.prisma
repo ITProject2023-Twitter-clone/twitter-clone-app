@@ -35,14 +35,22 @@ model Account {
 }
 
 model Profile {
-    userId      String  @id @map("user_id")
-    explanation String? @db.Text
-    header_path String? @db.Text
-    location    String  @db.VarChar(30)
-    website     String  @db.VarChar(100)
-    user        User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+    userId      String    @id @map("user_id")
+    explanation String?   @db.Text
+    header_path String?   @db.Text
+    location    String    @db.VarChar(30)
+    user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+    website     Website[]
 
     @@map("profiles")
+}
+
+model Website {
+    userId  String  @id @map("user_id")
+    website String  @db.Text
+    user    Profile @relation(fields: [userId], references: [userId], onDelete: Cascade)
+
+    @@map("websites")
 }
 
 model Session {
