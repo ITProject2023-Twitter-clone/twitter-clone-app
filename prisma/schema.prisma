@@ -35,12 +35,12 @@ model Account {
 }
 
 model Profile {
-    userId      String    @id @map("user_id")
-    explanation String?   @db.Text
-    header_path String?   @db.Text
-    location    String    @db.VarChar(30)
-    user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
-    website     Website[]
+    userId           String    @id @map("user_id")
+    explanation      String?   @db.Text
+    cover_image_path String?   @db.Text
+    location         String    @db.VarChar(30)
+    user             User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+    website          Website[]
 
     @@map("profiles")
 }
