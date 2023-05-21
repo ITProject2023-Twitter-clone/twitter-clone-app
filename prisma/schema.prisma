@@ -65,10 +65,11 @@ model Session {
 
 model User {
     id            String     @id @default(cuid()) @map("user_id")
-    name          String?    @unique
+    name          String?    @unique // GitHub username
+    displayName   String?    @map("display_name")
     email         String?    @unique
     emailVerified DateTime?  @map("email_verified")
-    image         String?    @map("image_path") @db.Text
+    iconPath      String?    @map("icon_path") @db.Text
     birhday       DateTime?
     createdAt     DateTime   @default(now()) @map("created_at")
     accounts      Account[]
