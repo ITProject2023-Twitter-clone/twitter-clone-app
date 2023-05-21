@@ -106,20 +106,8 @@ model Tweet {
     user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
     like      Like[]
     retweet   Retweet[]
-    tweet     Reply?
-    reply     Reply[]   @relation("rootTweet")
 
     @@map("tweets")
-}
-
-model Reply {
-    replyId     String @id @default(cuid()) @map("reply_id")
-    tweetId     String @unique @map("tweet_id")
-    rootTweetId String @map("root_tweet_id")
-    tweet       Tweet  @relation(fields: [tweetId], references: [tweetId], onDelete: Cascade)
-    rootTweet   Tweet  @relation("rootTweet", fields: [rootTweetId], references: [tweetId], onDelete: Cascade)
-
-    @@map("replies")
 }
 
 model Like {
