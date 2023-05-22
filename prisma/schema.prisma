@@ -35,22 +35,27 @@ model Account {
 }
 
 model Profile {
-    userId           String    @id @map("user_id")
-    explanation      String?   @db.Text
-    cover_image_path String?   @db.Text
-    location         String    @db.VarChar(30)
-    user             User      @relation(fields: [userId], references: [id], onDelete: Cascade)
-    website          Website[]
+    userId           String         @id @map("user_id")
+    bio              String?        @db.Text
+    cover_image_path String?        @db.Text
+    location         String?        @db.VarChar(30)
+    websiteUrl       String?        @db.Text
+    user             User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+    socialAccount    SocialAccount?
 
     @@map("profiles")
 }
 
-model Website {
-    userId  String  @id @map("user_id")
-    website String  @db.Text
-    user    Profile @relation(fields: [userId], references: [userId], onDelete: Cascade)
+model SocialAccount {
+    userId     String  @id @map("user_id")
+    githubUrl  String? @db.Text
+    qiitaUrl   String? @db.Text
+    zennUrl    String? @db.Text
+    twitterUrl String? @db.Text
 
-    @@map("websites")
+    profile Profile @relation(fields: [userId], references: [userId], onDelete: Cascade)
+
+    @@map("social_accounts")
 }
 
 model Session {
@@ -75,6 +80,7 @@ model User {
     accounts      Account[]
     sessions      Session[]
     profile       Profile?
+    draft         Draft[]
     tweet         Tweet[]
     like          Like[]
     retweet       Retweet[]
@@ -95,18 +101,86 @@ model VerificationToken {
     @@map("verification_tokens")
 }
 
+model Draft {
+    draftId    String       @id @map("draft_id")
+    userId     String       @map("user_id")
+    sentence   String       @db.VarChar(1000)
+    createdAt  DateTime     @default(now()) @map("created_at")
+    updatedAt  DateTime     @updatedAt @map("updated_at")
+    user       User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+    draftMedia DraftMedia[]
+
+    @@map("drafts")
+}
+
+model DraftMedia {
+    draftMediaId String @id @map("draft_media_id")
+    draftId      String @map("draft_id")
+    mediaPath    String @map("media_path")
+    draft        Draft  @relation(fields: [draftId], references: [draftId], onDelete: Cascade)
+
+    @@map("draft_media")
+}
+
 model Tweet {
-    tweetId   String    @id @map("tweet_id") // アプリケーション側でULIDを生成する
-    userId    String    @map("user_id")
-    sentence  String    @db.VarChar(1000)
-    // archive_at, is_archive
-    createdAt DateTime  @default(now()) @map("created_at")
-    updatedAt DateTime  @updatedAt @map("updated_at")
-    user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
-    like      Like[]
-    retweet   Retweet[]
+    tweetId         String         @id @map("tweet_id") // アプリケーション側でULIDを生成する
+    userId          String         @map("user_id")
+    tweetCategoryId Int            @map("tweet_category_id")
+    sentence        String         @db.VarChar(1000)
+    isArchive       Boolean        @default(false) @map("is_archive")
+    archiveAt       DateTime?      @map("archive_at")
+    isDeleted       Boolean        @default(false) @map("is_deleted")
+    DeletedAt       DateTime?      @map("deleted_at")
+    createdAt       DateTime       @default(now()) @map("created_at")
+    updatedAt       DateTime       @updatedAt @map("updated_at")
+    user            User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+    tweetMedia      TweetMedia[]
+    tweetCategory   TweetCategory  @relation(fields: [tweetCategoryId], references: [tweetCategoryId], onDelete: Cascade)
+    quoteRetweet    QuoteRetweet?
+    quoteTweet      QuoteRetweet[] @relation("quoteTweet")
+    like            Like[]
+    retweet         Retweet[]
+    ancentor        TreePath[]     @relation("ancentor")
+    descendant      TreePath[]     @relation("descendant")
 
     @@map("tweets")
+}
+
+model TweetMedia {
+    mediaId   String @id @map("media_id")
+    tweetId   String @map("tweet_id")
+    mediaPath String @map("media_path")
+    tweet     Tweet  @relation(fields: [tweetId], references: [tweetId], onDelete: Cascade)
+
+    @@map("tweet_media")
+}
+
+model TreePath {
+    ancentorId   String @map("ancentor_id")
+    descendantId String @map("descendant_id")
+    ancentor     Tweet  @relation("ancentor", fields: [ancentorId], references: [tweetId], onDelete: Cascade)
+    descendant   Tweet  @relation("descendant", fields: [descendantId], references: [tweetId], onDelete: Cascade)
+
+    @@id([ancentorId, descendantId])
+    @@map("tree_paths")
+}
+
+model TweetCategory {
+    tweetCategoryId Int     @id @default(autoincrement()) @map("tweet_category_id")
+    tweetCategory   String  @unique @map("tweet_category")
+    tweet           Tweet[]
+
+    @@map("tweet_categories")
+}
+
+model QuoteRetweet {
+    tweetId      String @unique @map("tweet_id")
+    quoteTweetId String @map("quote_tweet_id")
+    tweet        Tweet  @relation(fields: [tweetId], references: [tweetId], onDelete: Cascade)
+    quoteTweet   Tweet  @relation("quoteTweet", fields: [quoteTweetId], references: [tweetId], onDelete: Cascade)
+
+    @@id([tweetId, quoteTweetId])
+    @@map("quote_retweets")
 }
 
 model Like {
