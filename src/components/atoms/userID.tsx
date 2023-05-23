@@ -1,29 +1,13 @@
-import React from "react";
-import { AreaType } from "..";
+import React from 'react';
 
 type Props = {
   userID: string;
-  area: AreaType;
 };
 
-const getAriaClass = (area: AreaType): string => {
-  switch (area) {
-    case "profile": {
-      return "text-[10px]";
-    }
-    case "tweetDetailes": {
-      return "text-[18px]";
-    }
-    case "relation":
-    default: {
-      return "text-[14px]";
-    }
-  }
-};
-
-const UserID = (props: Props) => {
-  const areaClass = getAriaClass(props.area);
-  return <p className={`${areaClass} text-darkGray`}>{props.userID}</p>;
-};
+const UserID = (props:Props) => {
+  return (
+    <p className="text-base text-lightGray">{props.userID}</p>
+  )
+}
 
 export default UserID;

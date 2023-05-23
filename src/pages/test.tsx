@@ -1,8 +1,6 @@
 import Link from 'next/link'
 import React from 'react'
-import FollowPage from '~/components/templates/followPage'
-import Profile from '~/components/templates/profile'
-import Timeline from '~/components/templates/timeline'
+import Profile from 'src/components1/templates/profile'
 
 const Test = () => {
   return (

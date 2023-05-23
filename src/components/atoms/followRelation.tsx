@@ -1,16 +1,16 @@
 import React from "react";
 
 type Props = {
-  relation: string;
   count: number;
+  relation: string;
 };
 
 const FollowRelation = (props: Props) => {
   return (
-    <p className="text-[13px] font-bold">
-      <span>{props.count}</span>
-      <span className="mx-[4.5px]  text-darkGray"> {props.relation}</span>
-    </p>
+    <div>
+      <p className="text-base font-bold">{props.count}</p>
+      <p className="text-base text-lightGray">{props.relation}</p>
+    </div>
   );
 };
 
