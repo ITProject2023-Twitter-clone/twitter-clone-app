@@ -8,13 +8,15 @@ type Props = {
 
 const getAreaClass = (area: AreaType): string => {
   switch (area) {
-    case "profile": {
+    case "profile":
+    case "relation": {
       return "text-[24px]";
     }
     case "tweetDetailes": {
       return "text-[18px]";
     }
-    case "tweet": {
+    case "tweet":
+    case "relation": {
       return "text-[18px] pr-1";
     }
     default: {

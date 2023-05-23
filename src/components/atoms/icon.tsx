@@ -5,7 +5,6 @@ import { AreaType } from "..";
 
 type Props = {
   size: number;
-  css?: string;
   area: AreaType;
 };
 
@@ -14,7 +13,9 @@ const getAreaClass = (area: AreaType) => {
     case "profile": {
       return "border-4 border-white absolute bottom-0 h-[71px] w-[71px]";
     }
-    case "tweet": {
+    case "tweet":
+    case "relation":
+    {
       return "w-[46px] h-[46px] relative mr-2"
     }
     default: {
@@ -27,12 +28,12 @@ const Icon = (props: Props, { area = props.area }) => {
   const areaClass = getAreaClass(area);
   return (
     <div>
-      <div className={`${areaClass} rounded-[50%] `}>
+      <div className={`${areaClass} rounded-full `}>
         <Image
           src={Profile}
           alt="Icon"
           fill
-          className={`rounded-[50%] object-cover`}
+          className={`rounded-full object-cover`}
         />
       </div>
     </div>

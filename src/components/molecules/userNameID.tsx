@@ -11,10 +11,10 @@ type Props ={
 
 const UserNameID = (props:Props) => {
   return (
-    <div>
+    <>
       <UserName userName={props.name} area={props.area} />
       <UserID userID={props.id} area={props.area}  />
-    </div>
+    </>
   )
 }
 

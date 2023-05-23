@@ -1,11 +1,9 @@
 import React from 'react'
-import TabList from '../compounds/tabList'
 import Tweet from '../compounds/tweet'
 
-const UserTimeLine = () => {
+const UserTweets = () => {
   return (
     <div className='relative'>
-      <TabList />
       <Tweet />
       <Tweet />
       <Tweet />
@@ -27,4 +25,4 @@ const UserTimeLine = () => {
   )
 }
 
-export default UserTimeLine
+export default UserTweets

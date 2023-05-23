@@ -17,7 +17,7 @@ const Tweet = () => {
             <p className="text-[12px] text-darkGray">・yyyy/mm/dd</p>
           </div>
           <div>
-            <TweetContent content="tweettweet"/>
+            <TweetContent content="tweettweettweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeetttttttttwwwwwwwwweeeeeeeeeettttttttttt" />
             <ActionButtons />
           </div>
         </div>

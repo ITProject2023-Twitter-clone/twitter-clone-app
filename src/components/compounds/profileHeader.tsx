@@ -7,7 +7,7 @@ const ProfileHeader = () => {
   return (
     <div className="fixed -top-1 z-30 h-[40px] w-[598px] bg-white opacity-95">
       <div className="flex items-center">
-        <div className="mt-1 mx-1">
+        <div className="mt-3 mx-1">
           <ReturnButton />
         </div>
         <UserName userName="userName" area="profile" />

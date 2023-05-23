@@ -6,7 +6,7 @@ const HeaderImg = () => {
   return (
     <Image
     src={Header}
-    alt=""
+    alt="headerImage"
     width={600}
     height={124}
     className="h-[124px] w-[598px]
