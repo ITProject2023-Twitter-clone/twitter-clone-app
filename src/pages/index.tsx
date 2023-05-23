@@ -1,12 +1,13 @@
 import { type NextPage } from "next";
+import { signIn, signOut, useSession } from "next-auth/react";
 import Head from "next/head";
 import Link from "next/link";
-import { signIn, signOut, useSession } from "next-auth/react";
 
 import { api } from "~/utils/api";
 
 const Home: NextPage = () => {
   const hello = api.example.hello.useQuery({ text: "from tRPC" });
+  const session = api.example.getSession.useQuery();
 
   return (
     <>
@@ -51,6 +52,13 @@ const Home: NextPage = () => {
             <AuthShowcase />
           </div>
         </div>
+
+        <div>
+          <p>sessionを表示</p>
+          <p>{session.data?.user.name}</p>
+          <p>{session.data?.user.email}</p>
+          <p>{session.data?.user.image}</p>
+        </div>
       </main>
     </>
   );
@@ -63,7 +71,7 @@ const AuthShowcase: React.FC = () => {
 
   const { data: secretMessage } = api.example.getSecretMessage.useQuery(
     undefined, // no input
-    { enabled: sessionData?.user !== undefined },
+    { enabled: sessionData?.user !== undefined }
   );
 
   return (
