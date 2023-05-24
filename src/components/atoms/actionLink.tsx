@@ -15,9 +15,9 @@ type Props = {
 //hrefの中に入るのはページのパス。
 const ActionLink = (props:Props) => {
   return (
-    <Link href="">
-      <p>{props.count}</p>
-      <p>{props.action}</p>
+    <Link href="" className="flex w-[110px] h-[34px]">
+      <p className="text-base font-bold">{props.count}</p>
+      <p className="text-base text-lightGray ml-2 ">{props.action}</p>
     </Link>
   )
 }

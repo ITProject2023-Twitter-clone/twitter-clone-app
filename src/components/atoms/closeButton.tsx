@@ -1,11 +1,12 @@
 import Image from 'next/image'
 import React from 'react'
+import closeButton from '~/../public/closeButton.svg'
 
 const CloseButton = () => {
   //closeのsvg
   return (
     <button>
-      <Image src="" width={0} height={0} alt='' />
+      <Image src={closeButton} width={22} height={22} alt='closeButton' />
     </button>
   )
 }

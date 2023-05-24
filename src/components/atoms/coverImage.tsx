@@ -8,9 +8,9 @@ const CoverImage = () => {
     <Image
     src={Header}
     alt="headerImage"
-    width={600}
-    height={124}
-    className=""
+    width={608}
+    height={197}
+    className="relation"
   />
   )
 }
