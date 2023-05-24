@@ -29,4 +29,20 @@ export const profileRouter = createTRPCRouter({
       return profile;
     }),
   // プロフィールを編集する
+  /**
+   * 入力値
+   * Profile
+   * - bio string
+   * - cover_image
+   * - location string
+   * - websiteUrl string
+   * User
+   * - displayName string
+   * SocialAccount
+   * - githubUrl string
+   * - qiitaUrl string
+   * - zennUrl string
+   * - twitterUrl string
+   * トップアドレスが正しいかvalidation
+   */
 });
