@@ -26,6 +26,8 @@ export const likeRouter = createTRPCRouter({
       return like;
     }),
 
+  // いいねを解除する
+
   // いいね数を取得する
   getLikeCount: protectedProcedure
     .input(z.object({ tweetId: z.string() }))
