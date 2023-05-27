@@ -1,8 +1,7 @@
-import { PrismaClient } from "@prisma/client";
+import prisma from "lib/prisma";
+import { z } from "zod";
 import { protectedProcedure } from "~/server/api/trpc";
 import { createTRPCRouter } from "../trpc";
-
-const prisma = new PrismaClient();
 
 // ログイン中のユーザーのプロフィール情報を取得
 export const profileRouter = createTRPCRouter({
@@ -23,18 +22,25 @@ export const profileRouter = createTRPCRouter({
     return profile;
   }),
   // 任意のnameのプロフィール情報をreturnする
-  // getProfileByName: protectedProcedure
-  //   .input(z.object({ name: z.string() }))
-  //   .query(async ({ input }) => {
-  //     const profile = await prisma.user.findMany({
-  //       where: { name: input.name },
-  //       select: {
-  //         displayName: true,
-  //         profile: true,
-  //       },
-  //     });
-  //     return profile;
-  //   }),
+  getProfileByName: protectedProcedure
+    .input(z.object({ name: z.string() }))
+    .query(async ({ input }) => {
+      const user = await prisma.user.findFirst({
+        where: { name: input.name },
+      });
+      const profile = await prisma.profile.findUnique({
+        where: { userId: user?.id },
+        include: {
+          socialAccount: true,
+          user: {
+            select: {
+              displayName: true,
+            },
+          },
+        },
+      });
+      return profile;
+    }),
   // プロフィールを編集する
   /**
    * 入力値
