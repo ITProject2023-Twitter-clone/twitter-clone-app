@@ -1,16 +1,22 @@
-import { PrismaClient } from "@prisma/client";
+import prisma from "lib/prisma";
 import { z } from "zod";
 import { protectedProcedure } from "~/server/api/trpc";
 import { createTRPCRouter } from "../trpc";
 
-const prisma = new PrismaClient();
-
 // ログイン中のユーザーのプロフィール情報を取得
 export const profileRouter = createTRPCRouter({
   getMyProfile: protectedProcedure.query(async ({ ctx }) => {
-    const profile = await prisma.profile.findUnique({
+    const profile = await prisma.profile.findFirst({
       where: {
         userId: ctx.session.user.id,
+      },
+      include: {
+        user: {
+          select: {
+            displayName: true,
+          },
+        },
+        socialAccount: true,
       },
     });
     return profile;
@@ -19,10 +25,17 @@ export const profileRouter = createTRPCRouter({
   getProfileByName: protectedProcedure
     .input(z.object({ name: z.string() }))
     .query(async ({ input }) => {
-      const profile = await prisma.profile.findFirst({
-        where: {
+      const user = await prisma.user.findFirst({
+        where: { name: input.name },
+      });
+      const profile = await prisma.profile.findUnique({
+        where: { userId: user?.id },
+        include: {
+          socialAccount: true,
           user: {
-            name: input.name,
+            select: {
+              displayName: true,
+            },
           },
         },
       });
