@@ -61,8 +61,6 @@ const togleHTMLDisplay = (page: PageType, action: ActionType, count: number) => 
   }
 }
 
-
-
 const ActionButton = (props: Props) => {
   const actionClass = getActionClass(props.action);
   return (
