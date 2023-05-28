@@ -9,18 +9,19 @@ type Props = {
 const returnWidth = (page: PageType) => {
   switch (page) {
     case "profile": {
-      return 560;
+      return "w-5/6";
     };
     default: {
-      return 480;
+      return "w-2/3";
     }
   };
 }
 
 const Bio = (props: Props) => {
   return(
-  <div className={`w-[${returnWidth(props.page)}px] h-[38px]`}>
+  <div className={`${returnWidth(props.page)} h-10`}>
     <p className="text-base break-words">{props.bio}</p>
+    <button className="btn btn-primary">daisyUi button</button>
   </div>
   )
 };
