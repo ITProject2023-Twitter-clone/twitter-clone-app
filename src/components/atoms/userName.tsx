@@ -6,7 +6,7 @@ type Props = {
 
 const UserName = (props:Props) => {
   return (
-    <p className="text-base font-bold">{props.userName}</p>
+    <p className="font-bold text-base">{props.userName}</p>
   )
 }
 
