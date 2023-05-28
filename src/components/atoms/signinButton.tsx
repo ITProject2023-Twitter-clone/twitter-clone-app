@@ -1,7 +1,7 @@
 import React from "react";
 
-const SignInButton = () => {
+const SigninButton = () => {
   return <button>Sign in with GitHub !!!!!</button>;
 };
 
-export default SignInButton;
+export default SigninButton;
