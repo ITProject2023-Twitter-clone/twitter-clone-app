@@ -1,7 +1,7 @@
 import React from "react";
 
-const SignInText = () => {
+const SigninText = () => {
   return <p>You're an engineer, right?</p>;
 };
 
-export default SignInText;
+export default SigninText;
