@@ -15,7 +15,7 @@ const getSizeClass = (size: SizeType) => {
       return "";
     }
     default: {
-      return "";
+      return "w-14 h-14 relative";
     }
   }
 };
