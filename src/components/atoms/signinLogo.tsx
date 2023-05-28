@@ -2,10 +2,10 @@ import Image from 'next/image'
 import React from 'react'
 
 //srcとaltとwidthとheightの指定
-const SignInLogo = () => {
+const SigninLogo = () => {
   return (
     <Image src="" width={0} height={0} alt=''/>
   )
 }
 
-export default SignInLogo
+export default SigninLogo
