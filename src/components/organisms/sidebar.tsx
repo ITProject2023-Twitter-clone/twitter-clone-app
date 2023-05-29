@@ -1,8 +1,7 @@
 import React from "react";
-import SidebarNavList from "../molcules/sidebarNavList";
+import SidebarNavList from "../molecules/sidebarNavList";
 import CreateTweetButton from "../atoms/createTweetButton";
-import SidebarUser from "../molcules/sidebarUser";
-
+import SidebarUser from "../molecules/sidebarUser";
 const Sidebar = () => {
   return (
     <div className="flex h-screen w-72 flex-col justify-between text-center">
