@@ -5,6 +5,6 @@ type Props = {
 };
 
 const HeaderTtile = (props: Props) => {
-  return <p>{props.title}</p>;
+  return <p className="text-lg font-bold">{props.title}</p>;
 };
 export default HeaderTtile;
