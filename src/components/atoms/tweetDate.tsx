@@ -7,7 +7,7 @@ type Props ={
 
 const TweetDate = (props:Props) => {
   return (
-    <p>
+    <p className='opacity-50'>
       {props.date}
     </p>
   )
