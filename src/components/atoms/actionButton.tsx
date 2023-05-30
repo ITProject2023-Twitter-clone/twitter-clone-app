@@ -7,7 +7,7 @@ type PageType = "Tweet" | "TweetDetail"
 type Props = {
   page: PageType;
   action: ActionType;
-  count: number;
+  count?: number;
 };
 
 const COMMENT = "/comment.svg"
@@ -69,7 +69,7 @@ const getActionClass = (action: ActionType): string => {
 
 const ActionButton = (props: Props) => {
   const actionClass = getActionClass(props.action);
-  const getCount = (count: number) => {
+  const getCount = (count: number | undefined) => {
     switch (props.action) {
       case "Share": {
         return "";

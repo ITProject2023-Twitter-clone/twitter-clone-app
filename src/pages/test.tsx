@@ -1,17 +1,25 @@
-import Link from 'next/link'
-import React from 'react'
-import Profile from 'src/components1/templates/profile'
-import CoverImage from '~/components/atoms/coverImage'
+import React from "react";
+import Header from "~/components/organisms/header";
+import Tweet from "~/components/organisms/tweet";
 
 const Test = () => {
   return (
-    <div className="flex">
-      <CoverImage />
+    <div className="">
+      <Header />
+      <div className="space-y-3">
+        {[...Array(10)].map((i: number) => (
+          <div key={i}>
+            <Tweet />
+          </div>
+        ))}
+      </div>
+      {/* <Tweet /> */}
+      {/* <CoverImage /> */}
       {/* <Profile /> */}
-       {/* <FollowPage /> */}
-       {/* <Timeline /> */}
+      {/* <FollowPage /> */}
+      {/* <Timeline /> */}
     </div>
-  )
-}
+  );
+};
 
-export default Test
+export default Test;

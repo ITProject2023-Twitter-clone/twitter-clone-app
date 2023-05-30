@@ -7,7 +7,7 @@ const ActionButtons = () => {
       <ActionButton page='Tweet' action='Comment' count={100} />
       <ActionButton page='Tweet' action='Retweet' count={100} />
       <ActionButton page='Tweet' action='Likes' count={100} />
-      <ActionButton page='Tweet' action='Share' count={0} />
+      <ActionButton page='Tweet' action='Share' />
     </div>
   )
 }
