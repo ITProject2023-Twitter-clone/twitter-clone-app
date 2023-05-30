@@ -6,18 +6,13 @@ const Test = () => {
   return (
     <div className="">
       <Header />
-      <div className="space-y-3">
+      <div className="space-y-3 flex flex-col items-center">
         {[...Array(10)].map((i: number) => (
           <div key={i}>
             <Tweet />
           </div>
         ))}
       </div>
-      {/* <Tweet /> */}
-      {/* <CoverImage /> */}
-      {/* <Profile /> */}
-      {/* <FollowPage /> */}
-      {/* <Timeline /> */}
     </div>
   );
 };
