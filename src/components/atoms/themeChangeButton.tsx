@@ -19,7 +19,7 @@ const returnStyle = (type: ButtonType) => {
         }
     }
 }
-const themaChangeButton = (props: Props) => {
+const themeChangeButton = (props: Props) => {
   return (
     <label className={`flex h-12 w-12 cursor-pointer items-center justify-center rounded-md ${returnStyle(props.type)}`}>
       <input type="radio" name="options" data-title="1" className="hidden" />
@@ -28,4 +28,4 @@ const themaChangeButton = (props: Props) => {
   );
 };
 
-export default themaChangeButton;
+export default themeChangeButton;
