@@ -30,4 +30,14 @@ export const followRouter = createTRPCRouter({
     }),
 
   // フォロー数を取得する
+  getFollowCount: protectedProcedure
+    .input(z.object({ userName: z.string() }))
+    .query(async ({ input }) => {
+      const followCount = await prisma.follow.count({
+        where: {
+          user: { name: input.userName },
+        },
+      });
+      return followCount;
+    }),
 });
