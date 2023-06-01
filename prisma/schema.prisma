@@ -36,10 +36,10 @@ model Account {
 
 model Profile {
     userId           String         @id @map("user_id")
-    bio              String?        @db.Text
+    bio              String?        @db.VarChar(160)
     cover_image_path String?        @db.Text
     location         String?        @db.VarChar(30)
-    websiteUrl       String?        @db.Text
+    websiteUrl       String?        @db.VarChar(100)
     user             User           @relation(fields: [userId], references: [id], onDelete: Cascade)
     socialAccount    SocialAccount?
 
@@ -71,7 +71,7 @@ model Session {
 model User {
     id            String     @id @default(cuid()) @map("user_id")
     name          String?    @unique // GitHub username
-    displayName   String?    @map("display_name")
+    displayName   String?    @db.VarChar(30) @map("display_name")
     email         String?    @unique
     emailVerified DateTime?  @map("email_verified")
     iconPath      String?    @map("icon_path") @db.Text
