@@ -74,7 +74,7 @@ model User {
     displayName   String?    @db.VarChar(30) @map("display_name")
     email         String?    @unique
     emailVerified DateTime?  @map("email_verified")
-    iconPath      String?    @map("icon_path") @db.Text
+    image      String?    @map("image_path") @db.Text
     birhday       DateTime?
     createdAt     DateTime   @default(now()) @map("created_at")
     accounts      Account[]
@@ -191,6 +191,7 @@ model Like {
     tweet     Tweet    @relation(fields: [tweetId], references: [tweetId], onDelete: Cascade)
 
     @@id([userId, tweetId])
+    @@unique([userId, tweetId])
     @@map("likes")
 }
 
