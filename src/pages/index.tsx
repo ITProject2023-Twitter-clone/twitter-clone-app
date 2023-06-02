@@ -5,9 +5,6 @@ import Head from "next/head";
 import { api } from "~/utils/api";
 
 const Home: NextPage = () => {
-  const hello = api.example.hello.useQuery({ text: "from tRPC" });
-  const session = api.example.getSession.useQuery();
-  const profile = api.profile.getMyProfile.useQuery();
   const profileByName = api.profile.getProfileByName.useQuery({
     name: "kou12345",
   });
@@ -26,34 +23,21 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c]">
-        <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
-          <h1 className="text-5xl font-extrabold tracking-tight text-white sm:text-[5rem]">
-            Create <span className="text-[hsl(280,100%,70%)]">T3</span> App
-          </h1>
-
-          <div className="flex flex-col items-center gap-2">
-            <p className="text-2xl text-white">
-              {hello.data ? hello.data.greeting : "Loading tRPC query..."}
-            </p>
-            <AuthShowcase />
-          </div>
-        </div>
-
-        <div className="text-white">
-          <p className="font-bold">sessionを表示</p>
-          <p>{session.data?.user.name}</p>
-          <p>{session.data?.user.email}</p>
-          <p>{session.data?.user.image}</p>
-        </div>
+        <AuthShowcase />
         <br />
-        <div className="text-white">
-          <p className="font-bold">profileを表示</p>
-          <p>{profile.data?.userId}</p>
-        </div>
-        <br />
+
+        <ProfileShowcase />
+
+        <FollowShowcase />
+
+        <FollowCountShowcase />
+
+        <UnfollowShowcase />
+
         <div className="text-white">
           <p className="font-bold">profileByNameを表示</p>
           <p>{profileByName.data?.userId}</p>
+          <p>{profileByName.data?.bio}</p>
         </div>
         <br />
         {/* <div className="text-white">
@@ -96,3 +80,85 @@ const AuthShowcase: React.FC = () => {
     </div>
   );
 };
+
+// ログイン中のユーザーのプロフィールを取得
+const ProfileShowcase: React.FC = () => {
+  const {
+    data: profile,
+    isLoading,
+    isError,
+  } = api.profile.getMyProfile.useQuery();
+
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+
+  if (isError) {
+    return <p>Error!</p>;
+  }
+
+  return (
+    <div className="text-white">
+      <h2 className="font-bold">Profile</h2>
+      <p>userId: {profile?.userId}</p>
+      <p>bio: {profile?.bio}</p>
+      <p>cover_image_path: {profile?.cover_image_path}</p>
+      <p>location: {profile?.location}</p>
+      <p>websiteUrl: {profile?.websiteUrl}</p>
+      <br />
+    </div>
+  );
+};
+
+// フォローする
+const FollowShowcase: React.FC = () => {
+  const follow = api.follow.followUser.useMutation();
+
+  // ボタンを押したらフォローする
+  const handleFollow = () => {
+    follow.mutate({ targetUserName: "kou12345" });
+  };
+
+  return (
+    <div>
+      <button onClick={handleFollow} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        フォローする
+      </button>
+      <br />
+    </div>
+  );
+};
+
+// フォローを解除する
+const UnfollowShowcase: React.FC = () => {
+  const unfollow = api.follow.unfollowUser.useMutation();
+
+  // ボタンを押したらフォローを解除する
+  const handleUnfollow = () => {
+    unfollow.mutate({targetUserName: "kou12345"});
+  }
+
+  return (
+    <div>
+      <button onClick={handleUnfollow} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        フォローを解除する
+      </button>
+    </div>
+  )
+}
+
+// フォロー数を取得
+const FollowCountShowcase: React.FC = () => {
+  const followCount = api.follow.getFollowCount.useQuery({
+    userName: "kou-tech",
+  });
+
+  return (
+    <div className="text-white">
+      <p className="font-bold">followCountを表示</p>
+      <p>{followCount.data}</p>
+      <br />
+    </div>
+  );
+}
+
