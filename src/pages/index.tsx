@@ -32,6 +32,8 @@ const Home: NextPage = () => {
 
         <FollowCountShowcase />
 
+        <UnfollowShowcase />
+
         <div className="text-white">
           <p className="font-bold">profileByNameを表示</p>
           <p>{profileByName.data?.userId}</p>
@@ -127,6 +129,24 @@ const FollowShowcase: React.FC = () => {
   );
 };
 
+// フォローを解除する
+const UnfollowShowcase: React.FC = () => {
+  const unfollow = api.follow.unfollowUser.useMutation();
+
+  // ボタンを押したらフォローを解除する
+  const handleUnfollow = () => {
+    unfollow.mutate({targetUserName: "kou12345"});
+  }
+
+  return (
+    <div>
+      <button onClick={handleUnfollow} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        フォローを解除する
+      </button>
+    </div>
+  )
+}
+
 // フォロー数を取得
 const FollowCountShowcase: React.FC = () => {
   const followCount = api.follow.getFollowCount.useQuery({
@@ -141,3 +161,4 @@ const FollowCountShowcase: React.FC = () => {
     </div>
   );
 }
+
