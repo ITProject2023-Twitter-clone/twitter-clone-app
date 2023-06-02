@@ -33,6 +33,33 @@ export const followRouter = createTRPCRouter({
     }),
 
   // フォローを解除する
+  unfollowUser: protectedProcedure
+    .input(z.object({ targetUserName: z.string() }))
+    .mutation(async ({ input, ctx }) => {
+      // トランザクションを使って、フォローとフォロワーを同時に削除する
+      await prisma.$transaction(async (prisma) => {
+        // フォロー対象のユーザーを取得
+        const targetUser = await prisma.user.findUnique({
+          where: { name: input.targetUserName },
+        });
+
+        // フォローを削除する
+        await prisma.follow.deleteMany({
+          where: {
+            userId: ctx.session.user.id,
+            followingUserId: targetUser?.id,
+          },
+        });
+
+        // フォロワーを削除する
+        await prisma.follower.deleteMany({
+          where: {
+            userId: targetUser?.id,
+            followerUserId: ctx.session.user.id,
+          },
+        });
+      });
+    }),
 
   // フォロー数を取得する
   getFollowCount: protectedProcedure
