@@ -7,27 +7,32 @@ export const followRouter = createTRPCRouter({
   followUser: protectedProcedure
     .input(z.object({ targetUserName: z.string() }))
     .mutation(async ({ input, ctx }) => {
-      // フォロー対象のユーザーを取得
-      const targetUser = await prisma.user.findUnique({
-        where: { name: input.targetUserName },
-      });
+      // トランザクションを使って、フォローとフォロワーを同時に登録する
+      await prisma.$transaction(async (prisma) => {
+        // フォロー対象のユーザーを取得
+        const targetUser = await prisma.user.findUnique({
+          where: { name: input.targetUserName },
+        });
 
-      // フォローする
-      const follow = await prisma.follow.create({
-        data: {
-          user: { connect: { id: ctx.session.user.id } },
-          followingUser: { connect: { id: targetUser?.id } },
-        },
-      });
+        // フォローする
+        const follow = await prisma.follow.create({
+          data: {
+            user: { connect: { id: ctx.session.user.id } },
+            followingUser: { connect: { id: targetUser?.id } },
+          },
+        });
 
-      // フォローしたら、フォロワーテーブルにも追加する
-      const follower = await prisma.follower.create({
-        data: {
-          user: { connect: { id: targetUser?.id } },
-          followerUser: { connect: { id: ctx.session.user.id } },
-        },
+        // フォローしたら、フォロワーテーブルにも追加する
+        const follower = await prisma.follower.create({
+          data: {
+            user: { connect: { id: targetUser?.id } },
+            followerUser: { connect: { id: ctx.session.user.id } },
+          },
+        });
       });
     }),
+
+  // フォローを解除する
 
   // フォロー数を取得する
   getFollowCount: protectedProcedure
