@@ -1,11 +1,11 @@
 import React from "react";
 
 type Props = {
-  switch: string;
+  pageName: string;
 };
 
-const SwitchButton = (props: Props) => {
-  return <button className="font-bold text-base border w-full h-11">{props.switch}</button>;
+const SwitchElement = (props: Props) => {
+  return <button className="font-bold text-base border w-full h-11">{props.pageName}</button>;
 };
 
-export default SwitchButton;
+export default SwitchElement;
