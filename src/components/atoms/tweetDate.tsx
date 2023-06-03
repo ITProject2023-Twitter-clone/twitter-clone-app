@@ -1,14 +1,13 @@
 import React from 'react'
 
 type Props ={
-  date: string
-  // string?本当に？
+  formatedDate: string
 }
 
 const TweetDate = (props:Props) => {
   return (
     <p className='opacity-50'>
-      {props.date}
+      {props.formatedDate}
     </p>
   )
 }
