@@ -35,39 +35,7 @@ const getActionClass = (action: ActionType): string => {
   }
 };
 
-
-
-// const togleHTMLDisplay = (page: PageType, action: ActionType, count: number) => {
-//   switch (page) {
-//     case "TweetDetail": {
-//         const actionClass = getActionClass(action);
-//         return (
-//           <button className="w-[29px] flex">
-//             <Image src={`${actionClass}`} alt="tweettButton" width={29} height={29} />
-//           </button>
-//       )
-//     }
-//     default: {
-//       if(action === "Share") {
-//         const actionClass = getActionClass(action);
-//         return (
-//           <button className="w-[58px] flex">
-//             <Image src={`${actionClass}`} alt="tweettButton" width={22} height={22} />
-//           </button>
-//         )
-//       } else {
-//         const actionClass = getActionClass(action);
-//         return (
-//           <button className="w-[58px] flex">
-//             <Image src={`${actionClass}`} alt="tweettButton" width={22} height={22} />
-//             <p className="ml-2 text-base h-5 bottom-[3px] relative text-lightGray">{count}</p>
-//           </button>
-//       )
-//       }
-//     }
-//   }
-
-const ActionButton = (props: Props) => {
+const TweetActionButton = (props: Props) => {
   const actionClass = getActionClass(props.action);
   const getCount = (count: number | undefined) => {
     switch (props.action) {
@@ -88,4 +56,4 @@ const ActionButton = (props: Props) => {
     </button>
   );
 };
-export default ActionButton;
+export default TweetActionButton;
