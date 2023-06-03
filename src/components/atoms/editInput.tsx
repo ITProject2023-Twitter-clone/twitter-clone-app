@@ -1,14 +1,14 @@
 import React from 'react'
 
 type Props = {
-  area : string;
+  placeholder : string;
 }
 
-//areaにはBioとかUserNameとか入る
+//placeholderにはBioとかUserNameとか入る
 
 const EditInput = (props:Props) => {
   return (
-    <input type='text' placeholder={props.area} />
+    <input type='text' placeholder={props.placeholder} />
   )
 }
 
