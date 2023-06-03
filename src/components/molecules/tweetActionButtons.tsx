@@ -1,7 +1,7 @@
 import React from 'react'
 import TweetActionButton from '../atoms/tweetActionButton'
 
-const ActionButtons = () => {
+const TweeetActionButtons = () => {
   return (
     <div className='flex items-center justify-between w-3/5'>
       <TweetActionButton page='Tweet' action='Comment' count={100} />
@@ -12,4 +12,4 @@ const ActionButtons = () => {
   )
 }
 
-export default ActionButtons
+export default TweeetActionButtons
