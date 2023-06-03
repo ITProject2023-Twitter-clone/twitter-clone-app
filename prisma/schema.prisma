@@ -134,6 +134,7 @@ model Tweet {
     createdAt       DateTime       @default(now()) @map("created_at")
     updatedAt       DateTime       @updatedAt @map("updated_at")
     user            User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+    TweetTag        TweetTag[]
     tweetMedia      TweetMedia[]
     tweetCategory   TweetCategory  @relation(fields: [tweetCategoryId], references: [tweetCategoryId], onDelete: Cascade)
     quoteRetweet    QuoteRetweet?
@@ -144,6 +145,24 @@ model Tweet {
     descendant      TreePath[]     @relation("descendant")
 
     @@map("tweets")
+}
+
+model Tag {
+    tagId    String     @id @default(cuid()) @map("tag_id")
+    tagName  String     @unique @map("tag_name")
+    TweetTag TweetTag[]
+
+    @@map("tags")
+}
+
+model TweetTag {
+    tweetId String @map("tweet_id")
+    tagId   String @map("tag_id")
+    tweet   Tweet  @relation(fields: [tweetId], references: [tweetId], onDelete: Cascade)
+    tag     Tag    @relation(fields: [tagId], references: [tagId], onDelete: Cascade)
+
+    @@id([tweetId, tagId])
+    @@map("tweet_tags")
 }
 
 model TweetMedia {
