@@ -1,7 +1,7 @@
 import React from "react";
 
 type Props = {
-  date: string;
+  formatedDate: string;
   time: string;
 };
 
@@ -9,7 +9,7 @@ const TweetDetailDate = (props: Props) => {
   return (
     <div>
       <p>{props.time}</p>
-      <p>{props.date}</p>
+      <p>{props.formatedDate}</p>
     </div>
   );
 };
