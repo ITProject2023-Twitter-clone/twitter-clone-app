@@ -1,11 +1,11 @@
 import React from "react";
-import SwitchButton from "../atoms/switchButton";
+import SwitchElement from "../atoms/switchElement";
 
 const Switch = () => {
   return (
     <div className="flex">
-      <SwitchButton switch="Everyone" />
-      <SwitchButton switch="Following" />
+      <SwitchElement pageName="Everyone" />
+      <SwitchElement pageName="Following" />
     </div>
   );
 };
