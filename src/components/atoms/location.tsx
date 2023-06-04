@@ -11,7 +11,7 @@ const Location = (props: Props) => {
   return (
     <div className="flex w-fit h-fit">
       <Image src={location} width={17} height={17} alt="logo" />
-      <p className="pl-1 opacity-70">{props.location}</p>
+      <p className="pl-1 opacity-60">{props.location}</p>
     </div>
   );
 };
