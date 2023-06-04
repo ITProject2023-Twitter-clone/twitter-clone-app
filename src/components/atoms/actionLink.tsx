@@ -11,6 +11,8 @@ type Props = {
   count: number;
 }
 
+//propsをそのまま表示だめ
+
 
 //hrefの中に入るのはページのパス。
 const ActionLink = (props:Props) => {
