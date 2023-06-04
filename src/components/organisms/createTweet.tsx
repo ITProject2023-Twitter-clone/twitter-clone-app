@@ -1,7 +1,7 @@
 import React from "react";
 import Icon from "../atoms/icon";
 import UploadMedia from "../atoms/uploadMedia";
-import CreateTweetButton from "../atoms/createTweetButton";
+import SubmitTweetButton from "../atoms/submitTweetButton";
 
 const CreateTweet = () => {
   return (
@@ -16,7 +16,7 @@ const CreateTweet = () => {
           />
           <div className="my-3 flex items-center justify-between">
             <UploadMedia />
-            <CreateTweetButton />
+            <SubmitTweetButton />
           </div>
         </div>
       </div>
