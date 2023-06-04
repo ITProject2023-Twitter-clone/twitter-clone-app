@@ -8,9 +8,9 @@ type Props = {
 
 const JoinedDate = (props: Props) => {
   return (
-    <div className="flex">
+    <div className="flex w-fit">
       <Image src={joinedDate} width={17} height={17} alt="logo" />
-      <p className="pl-2 opacity-50"><span className="pr-1">joined</span>{props.date}</p>
+      <p className="ml-2 opacity-50"><span className="mr-1">joined</span>{props.date}</p>
     </div>
   );
 };
