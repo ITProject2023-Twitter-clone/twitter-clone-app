@@ -11,7 +11,7 @@ const WebSite = (props: Props) => {
   return (
     <div className="flex w-56">
       <Image src={website} width={17} height={17} alt="logo" />
-      <p className="pl-1 opacity-50">{props.link}</p>
+      <p className="ml-1 opacity-50">{props.link}</p>
     </div>
   );
 };
