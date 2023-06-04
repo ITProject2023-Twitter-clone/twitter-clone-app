@@ -1,6 +1,6 @@
 import React from "react";
 import SidebarNavList from "../molecules/sidebarNavList";
-import CreateTweetButton from "../atoms/createTweetButton";
+import CallCreateTweetButton from "../atoms/callCreateTweetButton";
 import SidebarUser from "../molecules/sidebarUser";
 const Sidebar = () => {
   return (
@@ -8,7 +8,7 @@ const Sidebar = () => {
       <div className="mx-auto">
         <SidebarNavList />
         <div className="mt-14">
-          <CreateTweetButton />
+          <CallCreateTweetButton />
         </div>
       </div>
       <div className="mx-auto">
