@@ -1,8 +1,8 @@
 import Image from "next/image";
 import React from "react";
 
-type ActionType = "Comment" | "Retweet" | "Likes" | "Share";
-type PageType = "Tweet" | "TweetDetail"
+type ActionType = "comment" | "retweet" | "likes" | "share";
+type PageType = "tweet" | "tweetDetail"
 
 type Props = {
   page: PageType;
@@ -17,16 +17,16 @@ const SHARE = "/share.svg"
 
 const getActionClass = (action: ActionType): string => {
   switch (action) {
-    case "Comment": {
+    case "comment": {
       return COMMENT;
     }
-    case "Retweet": {
+    case "retweet": {
       return RETWEET;
     }
-    case "Likes": {
+    case "likes": {
       return LIKES;
     }
-    case "Share": {
+    case "share": {
       return SHARE;
     }
     default: {
@@ -37,21 +37,12 @@ const getActionClass = (action: ActionType): string => {
 
 const TweetActionButton = (props: Props) => {
   const actionClass = getActionClass(props.action);
-  const getCount = (count: number | undefined) => {
-    switch (props.action) {
-      case "Share": {
-        return "";
-      }
-      default: {
-        return count;
-      }
-    }
-  };
+  
   return (
     <button className="flex items-center">
       <Image src={`${actionClass}`} alt="tweetButton" width={17} height={17} />
       <p className="pl-2">
-        {getCount(props.count)}
+        {props.action === "share" ? "" : props.count}
       </p>
     </button>
   );
