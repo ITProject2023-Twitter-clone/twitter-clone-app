@@ -19,7 +19,7 @@ const ActionLink = (props:Props) => {
   return (
     <Link href="" className="flex w-[110px] h-[34px]">
       <p className="text-base font-bold">{props.count}</p>
-      <p className="text-base text-lightGray ml-2 ">{props.action}</p>
+      <p className="text-base ml-2 ">{props.action}</p>
     </Link>
   )
 }

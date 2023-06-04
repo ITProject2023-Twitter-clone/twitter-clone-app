@@ -15,7 +15,7 @@ const returnStyle = (type: ButtonType) => {
             return "bg-primary"
         }
         case "light": {
-            return "border border-[#F471B5]" 
+            return "border" 
         }
     }
 }

@@ -42,7 +42,7 @@ const SocialAccount = (props: Props) => {
   return (
     <Link
       href=""
-      className="flex h-8 w-8 items-center justify-center rounded-full border border-[#B5CDF480]"
+      className="flex h-8 w-8 items-center justify-center rounded-full border"
     >
       <Image
         src={`${snsClass}`}
