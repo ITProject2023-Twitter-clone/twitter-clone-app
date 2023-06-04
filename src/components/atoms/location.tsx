@@ -9,7 +9,7 @@ type Props = {
 //srcはsvg入れて
 const Location = (props: Props) => {
   return (
-    <div className="flex w-fit h-fit">
+    <div className="flex w-24 h-fit">
       <Image src={location} width={17} height={17} alt="logo" />
       <p className="pl-1 opacity-50">{props.location}</p>
     </div>
