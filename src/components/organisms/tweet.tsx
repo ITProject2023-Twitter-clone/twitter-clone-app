@@ -26,7 +26,7 @@ const Tweet = () => {
                       そう、ツイートを。
                       そう、ツイートを。" />
         </div>
-        <div className="mt-8">
+        <div className="w-3/5 mt-8">
           <ActionButtons />
         </div>
       </div>
