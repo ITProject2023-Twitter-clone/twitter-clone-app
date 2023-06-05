@@ -2,10 +2,14 @@ import React from "react";
 import Icon from "../atoms/icon";
 import UploadMedia from "../atoms/uploadMedia";
 import SubmitTweetButton from "../atoms/submitTweetButton";
+import CloseButton from "../atoms/closeButton";
 
 const CreateTweet = () => {
   return (
     <div className=" border px-7 pt-5 rounded-2xl">
+      <div>
+        <CloseButton />
+      </div>
       <div className="flex rounded-xl">
         <Icon size="base" />
         <div className="w-full">
