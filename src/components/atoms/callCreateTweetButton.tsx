@@ -1,7 +1,11 @@
 import React from "react";
 
 const CallCreateTweetButton = () => {
-  return <button className="btn btn-outline text-xl rounded-full w-64 h-20 capitalize font-bold duration-300 hover:bg-primary">Tweet</button>;
+  return (
+    <button className="btn-outline btn h-20 w-64 rounded-full border-primary text-xl font-bold capitalize duration-300 hover:border-none hover:bg-primary">
+      Tweet
+    </button>
+  );
 };
 
 export default CallCreateTweetButton;
