@@ -5,7 +5,7 @@ import Header from "@/public/kaf.jpeg";
 const CoverImage = () => {
   return (
     //ダミーの画像を入れておく、後で変更する
-    <div className="absolute w-[608px] h-[197px]">
+    <div className="relative w-full h-48">
       <Image
         src={Header}
         alt="headerImage"
