@@ -1,9 +1,18 @@
-import React from 'react'
+import React from "react";
+import Search from "../molecules/search";
+import ThemeChangeButtons from "../molecules/themeChangeButtons";
 
-const rightSidebar = () => {
+const RightSidebar = () => {
   return (
-    <div>rightSidebar</div>
-  )
-}
+    <div className="h-full w-full flex">
+      <div className="ml-12 pt-10">
+        <Search />
+      </div>
+      <div className="ml-auto mr-10 mt-auto w-fit mb-6">
+        <ThemeChangeButtons />
+      </div>
+    </div>
+  );
+};
 
-export default rightSidebar
+export default RightSidebar;
