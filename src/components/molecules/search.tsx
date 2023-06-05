@@ -4,7 +4,7 @@ import SearchButton from "../atoms/searchButton";
 
 const Search = () => {
   return (
-    <div className="w-80">
+    <div className="w-fit ml-auto">
       <SearchInput />
       <div className="w-40 mt-5 ml-auto mr-3">
         <SearchButton />
