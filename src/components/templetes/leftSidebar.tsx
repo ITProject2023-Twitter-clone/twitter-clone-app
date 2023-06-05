@@ -5,7 +5,7 @@ import SidebarUser from "../molecules/sidebarUser";
 
 const LeftSidebar = () => {
   return (
-    <div className="h-screen w-full">
+    <div className="h-full w-full">
       <div className="ml-auto flex h-full w-4/5 flex-col items-center">
         <div className="space-y-14">
           <SidebarNavList />
