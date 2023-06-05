@@ -21,7 +21,6 @@ const Bio = (props: Props) => {
   return(
   <div className={`${returnWidth(props.page)} h-10`}>
     <p className="text-base break-words">{props.bio}</p>
-    <button className="btn btn-primary">daisyUi button</button>
   </div>
   )
 };
