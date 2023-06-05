@@ -12,7 +12,7 @@ const getSizeClass = (size: SizeType) => {
   //Imageではwidthとheightを設定しないで(fill)を使用して、親要素のサイズに合わせるようにするため、ここで書くのは親要素のCSS。でもそんな気にしないで書いてくれていい
   switch (size) {
     case "large": {
-      return "";
+      return "w-28 h-28 relative";
     }
     default: {
       return "w-14 h-14 relative";
