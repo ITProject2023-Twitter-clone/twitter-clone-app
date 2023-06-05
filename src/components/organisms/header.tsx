@@ -1,6 +1,6 @@
 import React from "react";
 import HeaderTtile from "../atoms/headerTtile";
-import Switch from "../molecules/switch";
+import HeaderSwitch from "../molecules/headerSwitch";
 
 const Header = () => {
   return (
@@ -9,7 +9,7 @@ const Header = () => {
       <div className="flex h-14 items-center border pl-12">
         <HeaderTtile title="Home" />
       </div>
-      <Switch />
+      <HeaderSwitch />
     </div>
   );
 };
