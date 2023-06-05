@@ -17,7 +17,7 @@ const Tweet = () => {
           <TweetInfo />
           <TweetSetting />
         </div>
-        <div className="w-full break-words pl-3 pr-10 pt-5">
+        <div className="pl-3 pr-10 pt-5">
           <TweetSentence
             sentence="これはツイートです。
                       ツイートの内容です。ツイートの内容です。ツイートの内容です。ツイートの内容です。
