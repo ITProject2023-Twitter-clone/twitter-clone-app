@@ -6,9 +6,8 @@ type Props = {
 
 const TweetSentence = (props: Props) => {
   return (
-    //一旦じっと.max-w-とmin-w-のジット以外のあれなに？
-    <div className="w-[600px] break-words">
-      <p className="">{props.sentence}</p>
+    <div className="w-full break-words">
+      <p>{props.sentence}</p>
     </div>
   );
 };
