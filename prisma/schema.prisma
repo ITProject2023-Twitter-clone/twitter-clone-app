@@ -232,6 +232,7 @@ model Follow {
     user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
     followingUser   User     @relation("followingUser", fields: [followingUserId], references: [id], onDelete: Cascade)
 
+    @@id([userId, followingUserId])
     @@map("follows")
 }
 
@@ -242,5 +243,6 @@ model Follower {
     user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
     followerUser   User     @relation("followerUser", fields: [followerUserId], references: [id], onDelete: Cascade)
 
+    @@id([userId, followerUserId])
     @@map("followers")
 }
