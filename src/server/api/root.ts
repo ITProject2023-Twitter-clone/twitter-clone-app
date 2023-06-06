@@ -1,6 +1,7 @@
 import { exampleRouter } from "~/server/api/routers/example";
 import { createTRPCRouter } from "~/server/api/trpc";
 import { followRouter } from "./routers/follow";
+import { followerRouter } from "./routers/follower";
 import { likeRouter } from "./routers/like";
 import { profileRouter } from "./routers/profile";
 
@@ -14,6 +15,7 @@ export const appRouter = createTRPCRouter({
   profile: profileRouter,
   like: likeRouter,
   follow: followRouter,
+  follower: followerRouter,
 });
 
 // export type definition of API
