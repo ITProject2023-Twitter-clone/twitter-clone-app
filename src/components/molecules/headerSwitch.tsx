@@ -3,8 +3,10 @@ import SwitchElement from "../atoms/switchElement";
 
 const Switch = () => {
   return (
-    <div className="flex">
-      <SwitchElement pageName="Everyone" />
+    <div className="flex border-b">
+      <div className="w-full border-r">
+        <SwitchElement pageName="Everyone" />
+      </div>
       <SwitchElement pageName="Following" />
     </div>
   );
