@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import { SizeType } from "../types"
-import Profile from "../../../public/kaf2.webp";
+import Profile from "@/public/kaf2.webp";
 
 type Props = {
   size?: SizeType;
