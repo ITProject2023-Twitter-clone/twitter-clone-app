@@ -3,29 +3,29 @@ import Icon from "../atoms/icon";
 import UploadMedia from "../atoms/uploadMedia";
 import SubmitTweetButton from "../atoms/submitTweetButton";
 import CloseButton from "../atoms/closeButton";
-import Link from "next/link";
+import DraftButton from "../atoms/draftButton";
 
 const CreateTweet = () => {
   return (
-    <div className=" border px-7 pt-5 rounded-2xl">
-      <div className="flex">
+    <div className="rounded-2xl bg-neutral pt-4">
+      <div className="flex px-5">
         <CloseButton />
         <div className="ml-auto mr-14">
-          <Link href="" className="text-primary">Draft</Link>
+          <DraftButton />
         </div>
       </div>
-      <div className="flex rounded-xl">
-        <Icon size="base" />
-        <div className="w-full">
-          <textarea
-            className="resize-none ml-4 h-full w-full bg-inherit pb-28  pt-3 text-lg outline-none"
-            wrap="soft"
-            placeholder="What's Up?"
-          />
-          <div className="my-3 flex items-center justify-between">
-            <UploadMedia />
-            <SubmitTweetButton />
-          </div>
+      <div className="flex border-b border-current pl-8">
+        <Icon />
+        <textarea
+          className="ml-4 h-full w-full resize-none bg-inherit pb-28  pt-3 text-lg outline-none"
+          wrap="soft"
+          placeholder="What's is happening!?!?!?!?"
+        />
+      </div>
+      <div className="flex h-20 items-center px-5">
+        <UploadMedia />
+        <div className="ml-auto">
+          <SubmitTweetButton />
         </div>
       </div>
     </div>
