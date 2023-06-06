@@ -1,5 +1,4 @@
 import React from "react";
-import CloseButton from "../atoms/closeButton";
 import Icon from "../atoms/icon";
 import UploadMedia from "../atoms/uploadMedia";
 import SubmitTweetButton from "../atoms/submitTweetButton";
