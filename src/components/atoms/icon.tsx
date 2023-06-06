@@ -4,10 +4,10 @@ import { SizeType } from "../types"
 import Profile from "../../../public/kaf2.webp";
 
 type Props = {
-  size: SizeType;
+  size?: SizeType;
 };
 
-const getSizeClass = (size: SizeType) => {
+const getSizeClass = (size: SizeType | undefined) => {
   //ここにはcssの要素（classNameの中身）を書いて
   //Imageではwidthとheightを設定しないで(fill)を使用して、親要素のサイズに合わせるようにするため、ここで書くのは親要素のCSS。でもそんな気にしないで書いてくれていい
   switch (size) {
