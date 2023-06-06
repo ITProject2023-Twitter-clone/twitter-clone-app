@@ -8,8 +8,6 @@ type Props = {
 };
 
 const getSizeClass = (size: SizeType | undefined) => {
-  //ここにはcssの要素（classNameの中身）を書いて
-  //Imageではwidthとheightを設定しないで(fill)を使用して、親要素のサイズに合わせるようにするため、ここで書くのは親要素のCSS。でもそんな気にしないで書いてくれていい
   switch (size) {
     case "large": {
       return "w-28 h-28";
