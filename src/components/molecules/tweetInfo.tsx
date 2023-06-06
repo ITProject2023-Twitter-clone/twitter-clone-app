@@ -7,7 +7,7 @@ const TweetInfo = () => {
   return (
     <div className='flex space-x-2'>
       <UserName userName='VOWAC'/>
-      <UserId userId='@VOWAC'/>
+      <UserId userId='VOWAC'/>
       <TweetDate formatedDate='2023/05/29'/>
     </div>
   )
