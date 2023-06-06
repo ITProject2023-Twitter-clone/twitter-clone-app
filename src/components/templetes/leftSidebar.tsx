@@ -6,8 +6,8 @@ import SidebarUser from "../molecules/sidebarUser";
 const LeftSidebar = () => {
   return (
     <div className="h-full w-full">
-      <div className="ml-auto flex h-full w-4/5 flex-col items-center">
-        <div className="space-y-14">
+      <div className="ml-auto flex h-full w-4/5 flex-col">
+        <div className="space-y-14 mt-16">
           <SidebarNavList />
           <CallCreateTweetButton />
         </div>
