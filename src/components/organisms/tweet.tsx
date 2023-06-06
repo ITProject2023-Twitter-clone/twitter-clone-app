@@ -8,11 +8,9 @@ import ActionButtons from "../molecules/tweetActionButtons";
 const Tweet = () => {
   return (
     <div className="flex w-full space-y-1 rounded-xl bg-base-300 p-4 ">
-      <div className="absolute">
-        <Icon size="base" />
-      </div>
+      <Icon size="base" />
 
-      <div className="w-full pl-20">
+      <div className="w-full pl-4">
         <div className="flex w-full justify-between">
           <TweetInfo />
           <TweetSetting />
@@ -24,9 +22,10 @@ const Tweet = () => {
                       ツイートをしましょう。
                       そう、ツイートを。
                       そう、ツイートを。
-                      そう、ツイートを。" />
+                      そう、ツイートを。"
+          />
         </div>
-        <div className="w-3/5 mt-8">
+        <div className="mt-8 w-3/5">
           <ActionButtons />
         </div>
       </div>
