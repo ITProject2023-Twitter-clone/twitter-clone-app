@@ -14,7 +14,7 @@ const CreateTweet = () => {
         <Icon size="base" />
         <div className="w-full">
           <textarea
-            className="ml-4 w-full bg-inherit pb-28  pt-3 text-lg outline-none"
+            className="ml-4 h-full w-full bg-inherit pb-28  pt-3 text-lg outline-none"
             wrap="soft"
             placeholder="What's Up?"
           />
