@@ -226,21 +226,23 @@ model Retweet {
 }
 
 model Follow {
-    id              Int    @id @default(autoincrement())
-    userId          String @unique @map("user_id")
-    followingUserId String @map("following_user_id")
-    user            User   @relation(fields: [userId], references: [id], onDelete: Cascade)
-    followingUser   User   @relation("followingUser", fields: [followingUserId], references: [id], onDelete: Cascade)
+    userId          String   @unique @map("user_id")
+    followingUserId String   @map("following_user_id")
+    createdAt       DateTime @default(now()) @map("created_at")
+    user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+    followingUser   User     @relation("followingUser", fields: [followingUserId], references: [id], onDelete: Cascade)
 
+    @@id([userId, followingUserId])
     @@map("follows")
 }
 
 model Follower {
-    id             Int    @id @default(autoincrement())
-    userId         String @unique @map("user_id")
-    followerUserId String @map("follower_user_id")
-    user           User   @relation(fields: [userId], references: [id], onDelete: Cascade)
-    followerUser   User   @relation("followerUser", fields: [followerUserId], references: [id], onDelete: Cascade)
+    userId         String   @unique @map("user_id")
+    followerUserId String   @map("follower_user_id")
+    createdAt      DateTime @default(now()) @map("created_at")
+    user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+    followerUser   User     @relation("followerUser", fields: [followerUserId], references: [id], onDelete: Cascade)
 
+    @@id([userId, followerUserId])
     @@map("followers")
 }
