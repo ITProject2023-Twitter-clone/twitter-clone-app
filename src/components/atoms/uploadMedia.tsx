@@ -3,7 +3,7 @@ import React from "react";
 
 const UploadMedia = () => {
   return (
-    <label htmlFor="media" className="flex">
+    <label htmlFor="media" className="flex cursor-pointer">
       <input type="file" accept="image/*" className="hidden" id="media" />
       <Image
         src="media.svg"
