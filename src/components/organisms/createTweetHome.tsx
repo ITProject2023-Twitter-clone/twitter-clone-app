@@ -7,7 +7,7 @@ const CreateTweetHome = () => {
   return (
     <div className="mx-auto my-2 flex h-40 w-[99%] rounded-xl border">
       <div className="mt-3 flex w-2/12 justify-center">
-        <Icon size="base" />
+        <Icon />
       </div>
       <div className="mt-7 flex w-10/12 flex-col pr-4">
         <textarea placeholder="What’s Up?" className="w-full h-full pl-4 pb-12 bg-transparent break-words resize-none outline-none placeholder:text-lg" />
