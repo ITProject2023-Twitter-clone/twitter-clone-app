@@ -5,7 +5,7 @@ type Props = {
 };
 
 const UserId = (props: Props) => {
-  return <p className="text-base opacity-50">{props.userId}</p>;
+  return <p className="text-base opacity-50">@{props.userId}</p>;
 };
 
 export default UserId;
