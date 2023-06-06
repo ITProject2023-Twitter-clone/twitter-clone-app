@@ -3,12 +3,16 @@ import Icon from "../atoms/icon";
 import UploadMedia from "../atoms/uploadMedia";
 import SubmitTweetButton from "../atoms/submitTweetButton";
 import CloseButton from "../atoms/closeButton";
+import Link from "next/link";
 
 const CreateTweet = () => {
   return (
     <div className=" border px-7 pt-5 rounded-2xl">
-      <div>
+      <div className="flex">
         <CloseButton />
+        <div className="ml-auto mr-14">
+          <Link href="" className="text-primary">Draft</Link>
+        </div>
       </div>
       <div className="flex rounded-xl">
         <Icon size="base" />
