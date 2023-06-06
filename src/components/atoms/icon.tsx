@@ -12,10 +12,10 @@ const getSizeClass = (size: SizeType | undefined) => {
   //Imageではwidthとheightを設定しないで(fill)を使用して、親要素のサイズに合わせるようにするため、ここで書くのは親要素のCSS。でもそんな気にしないで書いてくれていい
   switch (size) {
     case "large": {
-      return "w-28 h-28 relative";
+      return "w-28 h-28";
     }
     default: {
-      return "w-14 h-14 relative";
+      return "w-14 h-14";
     }
   }
 };
@@ -23,7 +23,7 @@ const getSizeClass = (size: SizeType | undefined) => {
 const Icon = (props: Props, { size = props.size }) => {
   const sizeClass = getSizeClass(size);
   return (
-    <div className={`${sizeClass}`}>
+    <div className={`${sizeClass} relative`}>
       <Image
         //ダミーのプロフィール画像入れておく。ここは後で変える
         src={Profile}
