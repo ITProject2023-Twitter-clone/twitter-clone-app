@@ -23,35 +23,35 @@ const Layout = ({ children }: Props) => {
 
   return (
     <div className="flex h-screen w-screen bg-neutral">
-      <isClickContext.Provider value={setIsClick}>
-        <div className="h-full w-3/12">
-          <isClickContext.Provider value={setIsClick}>
-            <LeftSidebar />
-          </isClickContext.Provider>
-        </div>
-        <div className="h-full w-5/12 overflow-auto outline">
-          <Header />
-          <div className="mt-28">{children}</div>
-        </div>
-        <div className="h-full w-4/12">
-          <RightSidebar />
-        </div>
+      <div className="h-full w-3/12">
+        <isClickContext.Provider value={setIsClick}>
+          <LeftSidebar />
+        </isClickContext.Provider>
+      </div>
+      <div className="h-full w-5/12 overflow-auto outline">
+        <Header />
+        <div className="mt-28">{children}</div>
+      </div>
+      <div className="h-full w-4/12">
+        <RightSidebar />
+      </div>
+      <div
+        className={`fixed z-30 h-full w-full justify-center  bg-base-100 bg-opacity-70 transition-all ${modalShow(
+          isClick
+        )}`}
+      >
         <div
-          className={`fixed z-30 h-full w-full justify-center  bg-base-100 bg-opacity-70 transition-all ${modalShow(
+          onClick={() => setIsClick(false)}
+          className={`fixed z-40 h-full w-full justify-center  transition-all ${modalShow(
             isClick
           )}`}
-        >
-          <div
-            onClick={() => setIsClick(false)}
-            className={`fixed z-40 h-full w-full justify-center  transition-all ${modalShow(
-              isClick
-            )}`}
-          ></div>
-          <div className="z-50 mt-40 w-5/12">
+        ></div>
+        <div className="z-50 mt-40 w-5/12">
+          <isClickContext.Provider value={setIsClick}>
             <CreateTweet />
-          </div>
+          </isClickContext.Provider>
         </div>
-      </isClickContext.Provider>
+      </div>
     </div>
   );
 };
