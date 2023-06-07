@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
+import { ZodVoid } from "zod";
+import { isClickContext } from "../templetes/layout";
+
+
 
 const CallCreateTweetButton = () => {
+  const onClickFunc = useContext(isClickContext)
   return (
-    <button className="btn-outline btn h-20 w-64 rounded-full border-primary text-xl font-bold capitalize duration-300 hover:border-none hover:bg-primary">
+    <button onClick={() =>onClickFunc(true)} className="btn-outline btn h-20 w-64 rounded-full border-primary text-xl font-bold capitalize duration-300 hover:border-none hover:bg-primary">
       Tweet
     </button>
   );
