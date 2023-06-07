@@ -4,21 +4,23 @@ import Header from "../organisms/header";
 import RightSidebar from "./rightSidebar";
 import CreateTweet from "../organisms/createTweet";
 import { useState } from "react";
-import { useContext } from "react";
+
 
 type Props = {
-  children: ReactNode;
+  children: ReactNode
+ 
 };
 
 export const isClickContext = createContext<
   React.Dispatch<React.SetStateAction<boolean>>
 >(() => {});
 
+
 const modalShow = (isClick: boolean) => {
   return isClick === true ? "flex" : "hidden";
 };
 
-const Layout = ({ children }: Props) => {
+const Layout = (props: Props) => {
   const [isClick, setIsClick] = useState<boolean>(false);
 
   return (
@@ -30,7 +32,7 @@ const Layout = ({ children }: Props) => {
       </div>
       <div className="h-full w-5/12 overflow-auto outline">
         <Header />
-        <div className="mt-28">{children}</div>
+        <div className="mt-28">{props.children}</div>
       </div>
       <div className="h-full w-4/12">
         <RightSidebar />
@@ -46,7 +48,7 @@ const Layout = ({ children }: Props) => {
             isClick
           )}`}
         ></div>
-        <div className="z-50 mt-40 w-5/12">
+        <div className="z-50 my-auto w-5/12 h-72">
           <isClickContext.Provider value={setIsClick}>
             <CreateTweet />
           </isClickContext.Provider>
