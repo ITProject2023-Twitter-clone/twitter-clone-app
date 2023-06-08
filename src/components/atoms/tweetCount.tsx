@@ -4,12 +4,11 @@ type Props = {
   count: number;
 };
 
-const TweetCount = (props: Props) => {
+const TweetCount = ({count}: Props) => {
   return (
-    <div>
-      <p>{props.count}</p>
-      <p>tweets</p>
-      {/* 0か1だった場合、tweetになる */}
+    <div className="flex opacity-50">
+      <p>{count}</p>
+      <p>{count >= 1 ? "tweets" : "tweet"}</p>
     </div>
   );
 };
