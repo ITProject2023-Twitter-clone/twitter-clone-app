@@ -31,7 +31,7 @@ const ProfileTop = () => {
       <div className="mx-4 mt-6">
         <div className="space-y-3">
           <UserName userName="VOWAC" />
-          <UserId userId="@VOWAC" />
+          <UserId userId="VOWAC" />
           <Bio
             bio="インフラエンジニアとINFURAエンジニアがいておもろいね"
             page="profile"
