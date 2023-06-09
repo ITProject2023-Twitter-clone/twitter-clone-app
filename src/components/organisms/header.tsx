@@ -49,40 +49,36 @@ const returnHeader = () => {
   switch (pathName) {
     case "/home" || "/signin" || "/initialSetting": {
       return (
-        <div className="fixed z-10 w-5/12 bg-neutral bg-opacity-60">
+        <>
           <div className="flex h-14 items-center border-b pl-12">
             <HeaderTtile title={`${returnHeaderTitle()}`} />
           </div>
           <HeaderSwitch />
-        </div>
+        </>
       );
     }
     case "/profile": {
       return (
-        <div className="fixed z-10 w-5/12 bg-neutral bg-opacity-60">
-          <div className="flex h-14 items-center border-b">
-            <div className="mx-4">
-              <BackButton />
-            </div>
-            <div className="leading-none">
-              <UserName userName="VOWAC" size="large" />
-              <TweetCount count={100} />
-            </div>
+        <div className="flex h-14 items-center border-b">
+          <div className="mx-4">
+            <BackButton />
+          </div>
+          <div className="leading-none">
+            <UserName userName="VOWAC" size="large" />
+            <TweetCount count={100} />
           </div>
         </div>
       );
     }
     case "/following" || "follower": {
       return (
-        <div className="fixed z-10 w-5/12 bg-neutral bg-opacity-60">
-          <div className="flex h-14 items-center border-b">
-            <div className="mx-4">
-              <BackButton />
-            </div>
-            <div className="leading-none">
-              <UserName userName="VOWAC" size="large" />
-              <UserId userId="VOWAC" />
-            </div>
+        <div className="flex h-14 items-center border-b">
+          <div className="mx-4">
+            <BackButton />
+          </div>
+          <div className="leading-none">
+            <UserName userName="VOWAC" size="large" />
+            <UserId userId="VOWAC" />
           </div>
         </div>
       );
@@ -94,14 +90,12 @@ const returnHeader = () => {
       "retweets": {
       const pathName = returnHeaderTitle();
       return (
-        <div className="fixed z-10 w-5/12 bg-neutral bg-opacity-60">
-          <div className="flex h-14 items-center border-b">
-            <div className="mx-4 flex items-center">
-              <BackButton />
-            </div>
-            <div className="ml-4">
-              <HeaderTtile title={`${pathName}`} />
-            </div>
+        <div className="flex h-14 items-center border-b">
+          <div className="mx-4 flex items-center">
+            <BackButton />
+          </div>
+          <div className="ml-4">
+            <HeaderTtile title={`${pathName}`} />
           </div>
         </div>
       );
