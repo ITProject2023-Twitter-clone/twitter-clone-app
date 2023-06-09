@@ -25,6 +25,7 @@ const Layout = (props: Props) => {
 
   return (
     <div className="flex h-screen w-screen bg-neutral">
+
       <div className="h-full w-3/12">
         <isClickContext.Provider value={setIsClick}>
           <LeftSidebar />
@@ -32,7 +33,7 @@ const Layout = (props: Props) => {
       </div>
       <div className="h-full w-5/12 overflow-auto outline">
         <Header />
-        <div className="mt-28">{props.children}</div>
+        {props.children}
       </div>
       <div className="h-full w-4/12">
         <RightSidebar />
