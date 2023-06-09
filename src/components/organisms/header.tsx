@@ -1,14 +1,119 @@
 import React from "react";
 import HeaderTtile from "../atoms/headerTtile";
 import HeaderSwitch from "../molecules/headerSwitch";
+import { useRouter } from "next/router";
+import BackButton from "../atoms/backButton";
+import UserName from "../atoms/userName";
+import UserId from "../atoms/userId";
+import TweetCount from "../atoms/tweetCount";
+
+const returnPathName = () => {
+  const router = useRouter();
+  const pathName = router.pathname;
+
+  return pathName;
+};
+
+const returnHeaderTitle = () => {
+  const pathName = returnPathName();
+  switch (pathName) {
+    case "/home": {
+      return "Home";
+    }
+    case "/signin": {
+      return "Signin";
+    }
+    case "/initionSetting": {
+      return "InitialSetting";
+    }
+    case "/tweet": {
+      return "Tweet";
+    }
+    case "/archive": {
+      return "Archive";
+    }
+    case "/quoteTweet": {
+      return "Quote Tweets";
+    }
+    case "/likes": {
+      return "Likes";
+    }
+    case "/retweets": {
+      return "Retweets";
+    }
+  }
+};
+
+const returnHeader = () => {
+  const pathName = returnPathName();
+  switch (pathName) {
+    case "/home" || "/signin" || "/initialSetting": {
+      return (
+        <div className="fixed z-10 w-5/12 bg-neutral bg-opacity-60">
+          <div className="flex h-14 items-center border-b pl-12">
+            <HeaderTtile title={`${returnHeaderTitle()}`} />
+          </div>
+          <HeaderSwitch />
+        </div>
+      );
+    }
+    case "/profile": {
+      return (
+        <div className="fixed z-10 w-5/12 bg-neutral bg-opacity-60">
+          <div className="flex h-14 items-center border-b">
+            <div className="mx-4">
+              <BackButton />
+            </div>
+            <div className="leading-none">
+              <UserName userName="VOWAC" size="large" />
+              <TweetCount count={100} />
+            </div>
+          </div>
+        </div>
+      );
+    }
+    case "/following" || "follower": {
+      return (
+        <div className="fixed z-10 w-5/12 bg-neutral bg-opacity-60">
+          <div className="flex h-14 items-center border-b">
+            <div className="mx-4">
+              <BackButton />
+            </div>
+            <div className="leading-none">
+              <UserName userName="VOWAC" size="large" />
+              <UserId userId="VOWAC" />
+            </div>
+          </div>
+        </div>
+      );
+    }
+    case "/tweetDetail" ||
+      "archive" ||
+      "quoteTweets" ||
+      "likes" ||
+      "retweets": {
+      const pathName = returnHeaderTitle();
+      return (
+        <div className="fixed z-10 w-5/12 bg-neutral bg-opacity-60">
+          <div className="flex h-14 items-center border-b">
+            <div className="mx-4 flex items-center">
+              <BackButton />
+            </div>
+            <div className="ml-4">
+              <HeaderTtile title={`${pathName}`} />
+            </div>
+          </div>
+        </div>
+      );
+    }
+  }
+};
 
 const Header = () => {
+  const pathName = returnHeaderTitle();
   return (
-    <div className="w-5/12 fixed z-10 bg-neutral bg-opacity-60">
-      <div className="flex h-14 items-center border-b pl-12">
-        <HeaderTtile title="Home" />
-      </div>
-      <HeaderSwitch />
+    <div className="fixed z-10 w-5/12 bg-neutral bg-opacity-60">
+      {returnHeader()}
     </div>
   );
 };
