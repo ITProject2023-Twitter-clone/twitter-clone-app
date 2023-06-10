@@ -47,7 +47,9 @@ const returnHeaderTitle = () => {
 const returnHeader = () => {
   const pathName = returnPathName();
   switch (pathName) {
-    case "/home" || "/signin" || "/initialSetting": {
+    case "/home":
+    case "/signin":
+    case "/initialSetting": {
       return (
         <>
           <div className="flex h-14 items-center border-b pl-12">
@@ -70,7 +72,8 @@ const returnHeader = () => {
         </div>
       );
     }
-    case "/following" || "/follower": {
+    case "/follower":
+    case "/following": {
       return (
         <>
           <div className="flex h-14 items-center border-b">
@@ -86,11 +89,11 @@ const returnHeader = () => {
         </>
       );
     }
-    case "/tweetDetail" ||
-      "archive" ||
-      "quoteTweets" ||
-      "likes" ||
-      "retweets": {
+    case "/tweetDetail":
+    case "archive":
+    case "quoteTweets":
+    case "likes":
+    case "retweets": {
       const pathName = returnHeaderTitle();
       return (
         <div className="flex h-14 items-center border-b">
