@@ -70,17 +70,20 @@ const returnHeader = () => {
         </div>
       );
     }
-    case "/following" || "follower": {
+    case "/following" || "/follower": {
       return (
-        <div className="flex h-14 items-center border-b">
-          <div className="mx-4">
-            <BackButton />
+        <>
+          <div className="flex h-14 items-center border-b">
+            <div className="mx-4">
+              <BackButton />
+            </div>
+            <div className="leading-none">
+              <UserName userName="VOWAC" size="large" />
+              <UserId userId="VOWAC" />
+            </div>
           </div>
-          <div className="leading-none">
-            <UserName userName="VOWAC" size="large" />
-            <UserId userId="VOWAC" />
-          </div>
-        </div>
+          <HeaderSwitch page="followRelation" />
+        </>
       );
     }
     case "/tweetDetail" ||
