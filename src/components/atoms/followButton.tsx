@@ -4,7 +4,7 @@ import React from 'react'
 
 const FollowButton = () => {
   return (
-    <button>Follow</button>
+    <button className="w-28 h-11 outline rounded-full">Follow</button>
   )
 }
 
