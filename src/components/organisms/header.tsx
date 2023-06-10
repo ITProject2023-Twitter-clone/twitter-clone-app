@@ -41,6 +41,9 @@ const returnHeaderTitle = () => {
     case "/retweets": {
       return "Retweets";
     }
+    case "/tweetDetail": {
+      return "Tweet";
+    }
   }
 };
 
