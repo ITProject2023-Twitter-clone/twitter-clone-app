@@ -12,7 +12,7 @@ const returnWidth = (page: PageType) => {
       return "w-5/6";
     };
     default: {
-      return "w-2/3";
+      return "w-full";
     }
   };
 }
