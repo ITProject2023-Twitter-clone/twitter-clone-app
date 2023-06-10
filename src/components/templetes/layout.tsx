@@ -8,7 +8,6 @@ import { useState } from "react";
 
 type Props = {
   children: ReactNode
- 
 };
 
 export const isClickContext = createContext<
