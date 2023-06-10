@@ -6,7 +6,7 @@ type Props = {
 
 const NoItem = (props: Props) => {
   return (
-    <p>
+    <p className="opacity-50">
       ここに
       {props.item}
       はありません
