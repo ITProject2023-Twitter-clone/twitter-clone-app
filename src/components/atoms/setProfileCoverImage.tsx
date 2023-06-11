@@ -1,11 +1,11 @@
 import React from "react";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import Header from "@/public/kaf.jpeg";
 import camera from "@/public/camera.svg";
 import defaultCoverImage from "@/public/coverImage.png"
 
 type Props ={
-    src: string
+    src: StaticImageData | string
 }
 const SetProfileCoverImage = (props: Props) => {
   return (
