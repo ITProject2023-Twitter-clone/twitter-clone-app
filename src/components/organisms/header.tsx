@@ -33,7 +33,7 @@ const returnHeaderTitle = () => {
     case "/archive": {
       return "Archive";
     }
-    case "/quoteTweet": {
+    case "/quoteTweets": {
       return "Quote Tweets";
     }
     case "/likes": {
@@ -111,17 +111,17 @@ const returnHeader = () => {
       );
     }
     case "/tweetDetail":
-    case "archive":
-    case "quoteTweets":
-    case "likes":
-    case "retweets": {
+    case "/archive":
+    case "/quoteTweets":
+    case "/likes":
+    case "/retweets": {
       return (
         <div className="flex h-14 items-center border-b">
           <div className="mx-4 flex items-center">
             <BackButton />
           </div>
           <div className="ml-4">
-            <HeaderTtile title={`${pathName}`} />
+            <HeaderTtile title={`${returnHeaderTitle()}`} />
           </div>
         </div>
       );
