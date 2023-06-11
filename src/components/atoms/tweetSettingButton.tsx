@@ -1,11 +1,12 @@
 import Image from 'next/image'
 import React from 'react'
+import readerImage from "@/public/tweetSetting.svg"
 
 const TweetSettingButton = () => {
   //三点リーダー
   return (
     <button>
-      <Image src="" width={0} height={0} alt='' />
+      <Image src={readerImage} width={41} height={41} alt='' />
     </button>
   )
 }
