@@ -8,7 +8,9 @@ import FollowButton from "../atoms/followButton";
 const UserCard = () => {
   return (
     <div className="flex h-32 w-[98%] rounded-2xl bg-base-100 px-2 py-4">
-      <Icon />
+      <div>
+        <Icon />
+      </div>
       <div className="ml-2">
         <div className="flex">
           <div>

@@ -8,7 +8,9 @@ import ActionButtons from "../molecules/tweetActionButtons";
 const Tweet = () => {
   return (
     <div className="flex w-full space-y-1 rounded-xl bg-base-300 p-4 ">
-      <Icon />
+      <div>
+        <Icon />
+      </div>
 
       <div className="w-full pl-4">
         <div className="flex w-full justify-between">

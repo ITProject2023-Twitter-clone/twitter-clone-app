@@ -7,8 +7,9 @@ import SignoutButton from "../atoms/signoutButton";
 const SidebarUser = () => {
   return (
     <div className="flex w-64 items-center rounded-lg  hover:bg-neutral">
-      <Icon />
-
+      <div>
+        <Icon />
+      </div>
       <div className="ml-2">
         <UserName userName="VOWAC" />
         <UserId userId="@VOWAC" />
