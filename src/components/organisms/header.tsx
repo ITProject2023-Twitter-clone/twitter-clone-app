@@ -6,6 +6,7 @@ import BackButton from "../atoms/backButton";
 import UserName from "../atoms/userName";
 import UserId from "../atoms/userId";
 import TweetCount from "../atoms/tweetCount";
+import SaveButton from "../atoms/saveButton";
 
 const returnPathName = () => {
   const router = useRouter();
@@ -23,8 +24,8 @@ const returnHeaderTitle = () => {
     case "/signin": {
       return "Signin";
     }
-    case "/initionSetting": {
-      return "InitialSetting";
+    case "/initialSetting": {
+      return "Initial Setting";
     }
     case "/tweet": {
       return "Tweet";
@@ -50,9 +51,26 @@ const returnHeaderTitle = () => {
 const returnHeader = () => {
   const pathName = returnPathName();
   switch (pathName) {
-    case "/home":
-    case "/signin":
+    case "/signin": {
+      return (
+        <div className="flex h-14 items-center border-b pl-12">
+          <HeaderTtile title={`${returnHeaderTitle()}`} />
+        </div>
+      );
+    }
     case "/initialSetting": {
+      return (
+        <>
+          <div className="flex h-14 items-center border-b pl-12">
+            <HeaderTtile title={`${returnHeaderTitle()}`} />
+            <div className="ml-auto mr-5">
+              <SaveButton />
+            </div>
+          </div>
+        </>
+      );
+    }
+    case "/home": {
       return (
         <>
           <div className="flex h-14 items-center border-b pl-12">
@@ -97,7 +115,6 @@ const returnHeader = () => {
     case "quoteTweets":
     case "likes":
     case "retweets": {
-      const pathName = returnHeaderTitle();
       return (
         <div className="flex h-14 items-center border-b">
           <div className="mx-4 flex items-center">
