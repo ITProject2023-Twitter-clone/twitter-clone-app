@@ -2,7 +2,7 @@ import React from 'react'
 
 const SaveButton = () => {
   return (
-    <button>save</button>
+    <button className="w-20 h-8 rounded-full bg-white text-base-100">Save</button>
   )
 }
 
