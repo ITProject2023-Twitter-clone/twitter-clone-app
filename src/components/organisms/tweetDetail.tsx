@@ -10,7 +10,7 @@ import TweeetActionButtons from "../molecules/tweetActionButtons";
 
 const TweetDetail = () => {
   return (
-    <div className="w-[99%] rounded-2 xl bg-base-100 px-4 py-3">
+    <div className="w-[99%] rounded-2xl bg-base-100 px-4 py-3">
       <div className="flex w-full">
         <div>
           <Icon />
