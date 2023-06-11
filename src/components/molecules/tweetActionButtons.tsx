@@ -1,13 +1,18 @@
 import React from "react";
 import TweetActionButton from "../atoms/tweetActionButton";
 
-const TweeetActionButtons = () => {
+
+type Props = {
+  pageType: "tweet" | "tweetDetail"
+  count?: number
+}
+const TweeetActionButtons = (props: Props) => {
   return (
     <div className="flex w-full items-center justify-between">
-      <TweetActionButton pageType="tweet" actionType="comment" count={100} />
-      <TweetActionButton pageType="tweet" actionType="retweet" count={100} />
-      <TweetActionButton pageType="tweet" actionType="like" count={100} />
-      <TweetActionButton pageType="tweet" actionType="share" />
+      <TweetActionButton pageType={props.pageType} actionType="comment" count={props.count} />
+      <TweetActionButton pageType={props.pageType} actionType="retweet" count={props.count} />
+      <TweetActionButton pageType={props.pageType} actionType="like" count={props.count} />
+      <TweetActionButton pageType={props.pageType} actionType="share" />
     </div>
   );
 };
