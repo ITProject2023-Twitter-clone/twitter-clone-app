@@ -6,12 +6,12 @@ type Props = {
 };
 const SetProfileFormInput = (props: Props) => {
   return (
-    <div className="h-16 w-11/12 rounded-2xl bg-transparent outline">
+    <div className="h-16 w-full rounded-2xl bg-transparent outline">
       <input
         type="text"
         placeholder={props.placeholder}
         value={props.value}
-        className="h-full w-11/12 bg-transparent ml-8 outline-none placeholder:ml-8"
+        className="h-full w-full bg-transparent ml-8 outline-none placeholder:ml-8"
       />
     </div>
   );
