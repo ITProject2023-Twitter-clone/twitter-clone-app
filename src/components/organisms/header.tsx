@@ -132,7 +132,7 @@ const returnHeader = () => {
 const Header = () => {
   const pathName = returnHeaderTitle();
   return (
-    <div className="fixed z-10 w-5/12 bg-neutral bg-opacity-60">
+    <div className="fixed z-50 w-5/12 bg-neutral bg-opacity-60">
       {returnHeader()}
     </div>
   );
