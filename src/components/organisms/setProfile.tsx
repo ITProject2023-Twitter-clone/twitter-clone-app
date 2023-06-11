@@ -22,6 +22,9 @@ const SetProfile = () => {
         <SetProfileIForm text="Location" placeholder="Input your location" />
         <SetProfileIForm text="web site" placeholder="Input your website" />
         <SetProfileIForm text="Git Hub" placeholder="Input your Github Account" />
+        <SetProfileIForm text="Twitter" placeholder="Input your Twitter Account" />
+        <SetProfileIForm text="Qiita" placeholder="Input your Qiita Account" />
+        <SetProfileIForm text="Zenn" placeholder="Input your Zenn Account" />
       </div>
     </div>
   );
