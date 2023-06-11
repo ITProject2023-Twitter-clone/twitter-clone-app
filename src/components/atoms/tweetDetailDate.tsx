@@ -7,8 +7,9 @@ type Props = {
 
 const TweetDetailDate = (props: Props) => {
   return (
-    <div>
+    <div className="flex opacity-50">
       <p>{props.time}</p>
+      <p>・</p>
       <p>{props.formatedDate}</p>
     </div>
   );
