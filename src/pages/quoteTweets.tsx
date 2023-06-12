@@ -8,7 +8,7 @@ const QuoteTweets = () => {
     <div className="pt-16 space-y-3 flex flex-col items-center h-full">
       {tweets.length === 0 ? (
         <div className="my-auto">
-          <NoItem item="アーカイブ" />
+          <NoItem item="引用ツイート" />
         </div>
       ) : (
         ""
