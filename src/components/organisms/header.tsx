@@ -15,7 +15,7 @@ const returnPathName = () => {
   return pathName;
 };
 
-const returnHeaderTitle = () => {
+const returnHeaderTitle = (): string => {
   const pathName = returnPathName();
   switch (pathName) {
     case "/home": {
@@ -45,6 +45,9 @@ const returnHeaderTitle = () => {
     case "/tweetDetail": {
       return "Tweet";
     }
+    default: {
+      return ""
+    }
   }
 };
 
@@ -54,7 +57,7 @@ const returnHeader = () => {
     case "/signin": {
       return (
         <div className="flex h-14 items-center border-b pl-12">
-          <HeaderTtile title={`${returnHeaderTitle()}`} />
+          <HeaderTtile title={returnHeaderTitle()} />
         </div>
       );
     }
@@ -62,7 +65,7 @@ const returnHeader = () => {
       return (
         <>
           <div className="flex h-14 items-center border-b pl-12">
-            <HeaderTtile title={`${returnHeaderTitle()}`} />
+            <HeaderTtile title={returnHeaderTitle()} />
             <div className="ml-auto mr-5">
               <SaveButton />
             </div>
@@ -74,7 +77,7 @@ const returnHeader = () => {
       return (
         <>
           <div className="flex h-14 items-center border-b pl-12">
-            <HeaderTtile title={`${returnHeaderTitle()}`} />
+            <HeaderTtile title={returnHeaderTitle()} />
           </div>
           <HeaderSwitch />
         </>
@@ -121,7 +124,7 @@ const returnHeader = () => {
             <BackButton />
           </div>
           <div className="ml-4">
-            <HeaderTtile title={`${returnHeaderTitle()}`} />
+            <HeaderTtile title={returnHeaderTitle()} />
           </div>
         </div>
       );
@@ -130,7 +133,6 @@ const returnHeader = () => {
 };
 
 const Header = () => {
-  const pathName = returnHeaderTitle();
   return (
     <div className="fixed z-50 w-5/12 bg-neutral bg-opacity-60">
       {returnHeader()}
